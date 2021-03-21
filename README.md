@@ -1,6 +1,15 @@
 # Cash Frontend
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app). The library used for this project is [Material UI](https://material-ui.com/)
+## Project dependencies
+
+This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+
+Dependencies used:
+
+- The library used for this project is [Material UI](https://material-ui.com/)
+- This project used [React Redux](https://react-redux.js.org/) for the state management together with [React-thunk](https://github.com/reduxjs/redux-thunk) for the middleware
+- [Formilk](https://formik.org/) is used for the form validation
+- [Recharts](https://recharts.org/en-US/) is used for generating the chart
 
 ## Available Scripts
 
