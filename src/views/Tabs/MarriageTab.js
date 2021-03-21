@@ -1,6 +1,5 @@
 import React from "react";
 import Grid from "@material-ui/core/Grid";
-import PersonalInfoCard from "../../components/PersonalInfoCard";
 import LineChartCard from "../../components/LineChartCard";
 import IncomeCard from "../../components/IncomeCard";
 import ExpenseCard from "../../components/ExpenseCard";

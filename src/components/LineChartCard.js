@@ -36,8 +36,6 @@ const useStyles = makeStyles((theme) => ({
 
 export default function LineChartCard() {
   const data = useSelector((state) => state.PersonalInformationReducer.data);
-  console.log("chart", data);
-  console.log("chart", data.values);
   const classes = useStyles();
   return (
     <Card className={classes.root}>

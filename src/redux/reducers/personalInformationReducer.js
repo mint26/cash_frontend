@@ -10,7 +10,6 @@ export default function PersonalInformationReducer(
 ) {
   switch (action.type) {
     case ADD_PERSONAL_INFORMATION: {
-      console.log("test", action.payload);
       return Object.assign({}, state, {
         data: action.payload,
       });
