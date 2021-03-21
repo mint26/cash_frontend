@@ -10,6 +10,7 @@ Dependencies used:
 - This project used [React Redux](https://react-redux.js.org/) for the state management together with [React-thunk](https://github.com/reduxjs/redux-thunk) for the middleware
 - [Formilk](https://formik.org/) is used for the form validation
 - [Recharts](https://recharts.org/en-US/) is used for generating the chart
+- [Postman](https://www.postman.com/downloads/) is used for setting the mock server and establish the API contract with backend. The collection can be found by importing cash_mock_server.json in the root folder to the Postman app.
 
 ## Available Scripts
 
