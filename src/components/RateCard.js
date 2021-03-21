@@ -62,6 +62,7 @@ export default function RateCard() {
               shrink: true,
             }}
             value={values.inflationRate}
+            step="0.01"
           />
           <TextField
             className={classes.txtField}

@@ -1,51 +1,57 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import Grid from "@material-ui/core/Grid";
-import PersonalInfoCard from "../components/PersonalInfoCard";
-import LineChartCard from "../components/LineChartCard";
-import IncomeCard from "../components/IncomeCard";
-import ExpenseCard from "../components/ExpenseCard";
-import RateCard from "../components/RateCard";
-
+import Tabs from "@material-ui/core/Tabs";
+import Tab from "@material-ui/core/Tab";
+import HousingTab from "./Tabs/HousingTab";
+import RetirementTab from "./Tabs/RetirementTab";
+import MarriageTab from "./Tabs/MarriageTab";
+import { TAB } from "../consts";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
   },
-  row: {
-    margin: theme.spacing(2),
+  tabs: {
+    margin: theme.spacing(0, 0, 2, 0),
   },
 });
 
 class Dashboard extends Component {
+  constructor(props) {
+    super(props);
+    this.state = { currentTab: <HousingTab />, selectedTab: "housing" };
+  }
+  handleChange = (e, newValue) => {
+    let nextTab = <HousingTab />;
+    switch (newValue) {
+      case TAB.RETIREMENT_TAB:
+        nextTab = <RetirementTab />;
+        break;
+      case TAB.MARRIAGE_TAB:
+        nextTab = <MarriageTab />;
+        break;
+    }
+    this.setState({
+      selectedTab: newValue,
+      currentTab: nextTab,
+    });
+  };
   render() {
-    const { classes, updatePersonalInformation } = this.props;
+    const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container spacing={2}>
-          <Grid container item xs={12} spacing={3} className={classes.row}>
-            <>
-              <Grid item xs={12} sm={6} md={2} lg={2} xl={2}>
-                <RateCard />
-              </Grid>
-              <Grid item xs={12} sm={6} md={5} lg={5} xl={5}>
-                <PersonalInfoCard onSubmitStep={updatePersonalInformation} />
-              </Grid>
-              <Grid item xs={12} sm={6} md={5} lg={5} xl={5}>
-                <LineChartCard />
-              </Grid>
-            </>
-          </Grid>
-          <Grid container item xs={12} spacing={3} className={classes.row}>
-            <>
-              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-                <IncomeCard />
-              </Grid>
-              <Grid item xs={12} sm={6} md={6} lg={6} xl={6}>
-                <ExpenseCard />
-              </Grid>
-            </>
-          </Grid>
-        </Grid>
+        <Tabs
+          value={this.state.selectedTab}
+          indicatorColor="primary"
+          textColor="primary"
+          onChange={this.handleChange}
+          aria-label="disabled tabs example"
+          className={classes.tabs}
+        >
+          <Tab label="Housing" value={TAB.HOUSING_TAB} />
+          <Tab label="Marriage" value={TAB.MARRIAGE_TAB} />
+          <Tab label="Retirement" value={TAB.RETIREMENT_TAB} />
+        </Tabs>
+        {this.state.currentTab}
       </div>
     );
   }

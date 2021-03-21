@@ -8,7 +8,7 @@ import Typography from "@material-ui/core/Typography";
 
 const useStyles = makeStyles((theme) => ({
   root: {
-    margin: "15vh auto",
+    margin: theme.spacing(2, "auto"),
     padding: 0,
   },
 }));
@@ -17,7 +17,7 @@ export default function App() {
   const classes = useStyles();
   return (
     <div>
-      <AppBar position="fixed" className={classes.appBar}>
+      <AppBar position="static" className={classes.appBar}>
         <Toolbar>
           <Typography variant="h6" noWrap>
             Cash
