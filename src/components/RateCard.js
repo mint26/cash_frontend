@@ -5,21 +5,16 @@ import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import TrendingUpIcon from "@material-ui/icons/TrendingUp";
-import FormLabel from "@material-ui/core/FormLabel";
-import FormControl from "@material-ui/core/FormControl";
-import FormGroup from "@material-ui/core/FormGroup";
-import FormControlLabel from "@material-ui/core/FormControlLabel";
-import Checkbox from "@material-ui/core/Checkbox";
+import Grid from "@material-ui/core/Grid";
+import TextField from "@material-ui/core/TextField";
 import { useFormik } from "formik";
 
 const useStyles = makeStyles((theme) => ({
   root: {
     height: "100%",
   },
-  controlLabel: {
-    fontSize: 14,
-    fontFamily: theme.fontFamily,
-    color: theme.palette.secondary,
+  txtField: {
+    margin: theme.spacing(2, 0),
   },
   icon: {
     fontSize: 50,
@@ -29,10 +24,10 @@ const useStyles = makeStyles((theme) => ({
 export default function RateCard() {
   const classes = useStyles();
   const [initialValues] = useState({
-    inflationRate: 0,
-    housePriceIndex: 0,
-    investmentRate: 0,
-    bankInterestRate: 0,
+    inflationRate: 2.52,
+    housePriceIndex: 5.96,
+    investmentRate: 4.2,
+    bankInterestRate: 1.2,
   });
   const formik = useFormik({
     enableReinitialize: false,
@@ -55,63 +50,56 @@ export default function RateCard() {
         avatar={<TrendingUpIcon />}
       />
       <CardContent>
-        <FormControl component="fieldset" className={classes.formControl}>
-          <FormLabel component="legend">Rates</FormLabel>
-          <FormGroup>
-            <FormControlLabel
-              classes={{
-                label: classes.controlLabel,
-              }}
-              control={
-                <Checkbox
-                  checked={values.inflationRate}
-                  onChange={handleChange}
-                  name="inflationRate"
-                />
-              }
-              label="Inflation Rate"
-            />
-            <FormControlLabel
-              classes={{
-                label: classes.controlLabel,
-              }}
-              control={
-                <Checkbox
-                  checked={values.housePriceIndex}
-                  onChange={handleChange}
-                  name="housePriceIndex"
-                />
-              }
-              label="Housing Price Index"
-            />
-            <FormControlLabel
-              classes={{
-                label: classes.controlLabel,
-              }}
-              control={
-                <Checkbox
-                  checked={values.investmentRate}
-                  onChange={handleChange}
-                  name="investmentRate"
-                />
-              }
-              label="Investment Rate"
-            />
-            <FormControlLabel
-              classes={{
-                label: classes.controlLabel,
-              }}
-              control={
-                <Checkbox
-                  checked={values.bankInterestRate}
-                  onChange={handleChange}
-                  name="bankInterestRate"
-                />
-              }
-              label="Bank Interest Rate"
-            />
-          </FormGroup>
-        </FormControl>
+        <Grid container>
+          <TextField
+            className={classes.txtField}
+            variant="outlined"
+            label="Inflation Rate"
+            name="inflationRate"
+            type="text"
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={values.inflationRate}
+          />
+          <TextField
+            className={classes.txtField}
+            variant="outlined"
+            label="Housing Price Index"
+            name="housePriceIndex"
+            type="text"
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={values.housePriceIndex}
+          />
+          <TextField
+            className={classes.txtField}
+            variant="outlined"
+            label="Investment Rate"
+            name="investmentRate"
+            type="text"
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={values.investmentRate}
+          />
+          <TextField
+            className={classes.txtField}
+            variant="outlined"
+            label="Bank Interest Rate"
+            name="bankInterestRate"
+            type="text"
+            onChange={handleChange}
+            InputLabelProps={{
+              shrink: true,
+            }}
+            value={values.bankInterestRate}
+          />
+        </Grid>
       </CardContent>
     </Card>
   );
