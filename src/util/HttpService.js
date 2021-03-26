@@ -51,9 +51,9 @@ class HttpService {
   //     url = interpolateURL(url, category);
   //     return getRequest(METHOD.GET, url);
   //   };
-  getProjectedValues = (post) => {
-    let url = `${API_URL}/getProjectedValues`;
-    return getRequest(METHOD.POST, url, post);
+  getProjectedValues = (data) => {
+    let url = `${API_URL}/api/calculate`;
+    return getRequest(METHOD.POST, url, data);
   };
 }
 

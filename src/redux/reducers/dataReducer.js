@@ -18,6 +18,7 @@ const initialState = {
         newAgeFrom: 20,
         newAgeTo: 30,
         newRate: 3,
+        newBonus: 0,
       },
     ],
     personalInformation: {
@@ -35,17 +36,24 @@ const initialState = {
       downPayment: 0,
     },
     rates: {
-      inflationRate: 0,
       housePriceIndex: 1,
       investmentRate: 2,
       bankInterestRate: 3,
     },
   },
-  data: {},
+  data: {
+    maximum_income_reduction: "16%",
+    minimum_investment_percentage: "10%",
+    minimum_investment_rate: "4%",
+    potential_max_expenses: "15%",
+    recommended_retirement_age: "12",
+    zero_savings_age: "23",
+  },
 };
 
 export default function DataReducer(state = initialState, action) {
   console.log("checking action", action.payload, action.inputData);
+  console.log(JSON.stringify(action.inputData));
   switch (action.type) {
     case DATA_REDUCER: {
       return Object.assign({}, state, {

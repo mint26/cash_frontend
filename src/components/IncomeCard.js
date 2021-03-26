@@ -58,28 +58,6 @@ export default function IncomeCard() {
               <TextField
                 className={classes.txtField}
                 variant="standard"
-                name={`"newAgeFrom"${index}`}
-                type="text"
-                onChange={(e) => handleChange(e, index, "newAgeFrom")}
-                onBlur={handleOnBlur}
-                value={item.newAgeFrom}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newAgeTo"
-                type="text"
-                onChange={(e) => handleChange(e, index, "newAgeTo")}
-                onBlur={handleOnBlur}
-                value={item.newAgeTo}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
                 name="newIncomeName"
                 type="text"
                 onChange={(e) => handleChange(e, index, "newIncomeName")}
@@ -91,8 +69,30 @@ export default function IncomeCard() {
               <TextField
                 className={classes.txtField}
                 variant="standard"
+                name={`"newAgeFrom"${index}`}
+                type="number"
+                onChange={(e) => handleChange(e, index, "newAgeFrom")}
+                onBlur={handleOnBlur}
+                value={item.newAgeFrom}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name="newAgeTo"
+                type="number"
+                onChange={(e) => handleChange(e, index, "newAgeTo")}
+                onBlur={handleOnBlur}
+                value={item.newAgeTo}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
                 name="newIncomeAmount"
-                type="text"
+                type="number"
                 onChange={(e) => handleChange(e, index, "newIncomeAmount")}
                 onBlur={handleOnBlur}
                 value={item.newIncomeAmount}
@@ -103,10 +103,21 @@ export default function IncomeCard() {
                 className={classes.txtField}
                 variant="standard"
                 name="newIncomeRate"
-                type="text"
+                type="number"
                 onChange={(e) => handleChange(e, index, "newIncomeRate")}
                 onBlur={handleOnBlur}
                 value={item.newIncomeRate}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name="newBonus"
+                type="number"
+                onChange={(e) => handleChange(e, index, "newBonus")}
+                onBlur={handleOnBlur}
+                value={item.newBonus}
               />
             </TableCell>
           </TableRow>
@@ -116,19 +127,22 @@ export default function IncomeCard() {
   const dataHeader = (
     <TableRow>
       <TableCell>
-        <Typography>Age from</Typography>
+        <Typography>Source of Income</Typography>
+      </TableCell>
+      <TableCell>
+        <Typography>Age From</Typography>
       </TableCell>
       <TableCell>
         <Typography>Age To</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Source of Income</Typography>
+        <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Amount</Typography>
+        <Typography>Bonus (Months)</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Rate</Typography>
+        <Typography>Annual Rate of increase</Typography>
       </TableCell>
     </TableRow>
   );
@@ -140,6 +154,7 @@ export default function IncomeCard() {
       newAgeFrom: 20,
       newAgeTo: 30,
       newRate: 3,
+      newBonus: 0,
     };
     let newItems = [...items, newItem];
     setItems(newItems);

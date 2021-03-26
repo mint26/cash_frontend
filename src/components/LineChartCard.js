@@ -17,6 +17,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import AssessmentIcon from "@material-ui/icons/Assessment";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
+import Grid from "@material-ui/core/Grid";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -68,15 +69,47 @@ export default function LineChartCard() {
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="name" />
+            <XAxis dataKey="age_range" />
             <YAxis />
             <Tooltip />
             <Legend />
-            <Bar dataKey="pv" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="expected_val" stroke="#ff7300" />
-            <Line type="monotone" dataKey="target_val" stroke="#008000" />
+            <Bar dataKey="total" barSize={20} fill="#413ea0" />
+            <Line type="monotone" dataKey="income" stroke="#ff7300" />
+            <Line type="monotone" dataKey="expense" stroke="#008000" />
           </ComposedChart>
         </ResponsiveContainer>
+        <Grid container>
+          <Grid item xs={12}>
+            <Typography>
+              {`First age when you net assets reach 0 is ${data.zero_savings_age}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>
+              {`You can increase your expenses by ${data.potential_max_expenses}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>
+              {`You can reduce your income by ${data.maximum_income_reduction}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>
+              {`Your earliest retirement age is ${data.recommended_retirement_age}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>
+              {`Your lowest investment rate is ${data.minimum_investment_rate}`}
+            </Typography>
+          </Grid>
+          <Grid item xs={12}>
+            <Typography>
+              {`Your lowest investment allocation is ${data.minimum_investment_percentage}`}
+            </Typography>
+          </Grid>
+        </Grid>
       </CardContent>
     </Card>
   );

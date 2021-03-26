@@ -56,7 +56,7 @@ export default function HousingCard() {
             color="textSecondary"
             gutterBottom
           >
-            House specific
+            Housing
           </Typography>
         }
         avatar={<HouseIcon />}
@@ -72,7 +72,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="housePrice">House</label>
+              <label htmlFor="housePrice">Purchase Price</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -114,7 +114,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="houseInterestRate">House interest rate</label>
+              <label htmlFor="houseInterestRate">Loan Interest Rate</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -135,7 +135,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="downPayment">Down payment</label>
+              <label htmlFor="downPayment">Downpayment</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -156,7 +156,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="loanLength">Loan Length</label>
+              <label htmlFor="loanLength">Loan Duration (Years)</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>

@@ -71,9 +71,6 @@ class Dashboard extends Component {
         <Grid container spacing={2}>
           <Grid container item xs={12} spacing={3}>
             <>
-              <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
-                <LineChartCard />
-              </Grid>
               <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
                 <Grid
                   container
@@ -86,6 +83,9 @@ class Dashboard extends Component {
                     <RateCard />
                   </Grid>
                 </Grid>
+              </Grid>
+              <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
+                <LineChartCard />
               </Grid>
             </>
           </Grid>

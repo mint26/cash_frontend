@@ -25,6 +25,9 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     fontSize: 25,
   },
+  tableHeaderCell: {
+    fontSize: theme.fontSize,
+  },
   txtField: {
     margin: theme.spacing(0, 2, 0, 0),
   },
@@ -55,6 +58,17 @@ export default function ExpenseCard() {
               <TextField
                 className={classes.txtField}
                 variant="standard"
+                name="newExpenseName"
+                type="text"
+                onChange={(e) => handleChange(e, index, "newExpenseName")}
+                onBlur={handleOnBlur}
+                value={item.newExpenseName}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
                 name={`"newAgeFrom"${index}`}
                 type="text"
                 onChange={(e) => handleChange(e, index, "newAgeFrom")}
@@ -71,17 +85,6 @@ export default function ExpenseCard() {
                 onChange={(e) => handleChange(e, index, "newAgeTo")}
                 onBlur={handleOnBlur}
                 value={item.newAgeTo}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newExpenseName"
-                type="text"
-                onChange={(e) => handleChange(e, index, "newExpenseName")}
-                onBlur={handleOnBlur}
-                value={item.newExpenseName}
               />
             </TableCell>
             <TableCell>
@@ -113,19 +116,19 @@ export default function ExpenseCard() {
   const dataHeader = (
     <TableRow>
       <TableCell>
+        <Typography>Source of Expense</Typography>
+      </TableCell>
+      <TableCell>
         <Typography>Age from</Typography>
       </TableCell>
       <TableCell>
         <Typography>Age To</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Source of Expense</Typography>
+        <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Amount</Typography>
-      </TableCell>
-      <TableCell>
-        <Typography>Rate</Typography>
+        <Typography>Annual Inflation Rate</Typography>
       </TableCell>
     </TableRow>
   );

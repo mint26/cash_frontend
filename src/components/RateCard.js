@@ -56,7 +56,7 @@ export default function RateCard() {
       />
       <CardContent>
         <Grid container>
-          <TextField
+          {/* <TextField
             className={classes.txtField}
             variant="outlined"
             label="Inflation Rate"
@@ -69,7 +69,7 @@ export default function RateCard() {
             }}
             value={rates.inflationRate}
             step="0.01"
-          />
+          /> */}
           <TextField
             className={classes.txtField}
             variant="outlined"
@@ -86,7 +86,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Investment Rate"
+            label="Investment ROI"
             name="investmentRate"
             type="text"
             onChange={(e) => handleChange(e, "investmentRate")}

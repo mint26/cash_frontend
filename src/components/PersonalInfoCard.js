@@ -67,7 +67,7 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="startingAge">Starting Age</label>
+              <label htmlFor="startingAge">Current Age</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -88,7 +88,7 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="startingSaving">Starting Saving</label>
+              <label htmlFor="startingSaving">Current Savings</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -152,7 +152,7 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               gutterBottom
             >
               <label htmlFor="investmentPercentage">
-                Investment Percentage
+                % of Savings Invested
               </label>
             </Typography>
           </Grid>
