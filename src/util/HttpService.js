@@ -1,3 +1,4 @@
+const https = require("https");
 const API_URL = process.env.REACT_APP_API_URL;
 // const API_END_POINTS = {
 //   categories: "/categories",
@@ -17,10 +18,15 @@ if (!token) {
   token = localStorage.token = Math.random().toString(36).substr(-8);
 }
 
+const httpsAgent = new https.Agent({
+  rejectUnauthorized: false,
+});
+
 const headers = {
   Accept: "application/json",
   "Content-Type": "application/json",
   Authorization: token,
+  agent: httpsAgent,
 };
 
 const getRequest = (method, url, body) => {
