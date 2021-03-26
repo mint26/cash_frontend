@@ -38,6 +38,7 @@ const useStyles = makeStyles((theme) => ({
 export default function LineChartCard() {
   const data = useSelector((state) => state.DataReducer.data);
   const classes = useStyles();
+  console.log("getting data", data);
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -60,7 +61,7 @@ export default function LineChartCard() {
           <ComposedChart
             width={500}
             height={400}
-            data={data.values}
+            data={data}
             margin={{
               top: 20,
               right: 20,

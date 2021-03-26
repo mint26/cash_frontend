@@ -5,35 +5,36 @@ const initialState = {
     expenses: [
       {
         newExpenseName: "",
-        newExpenseAmount: 0,
+        newExpenseAmount: 1,
         newAgeFrom: 20,
         newAgeTo: 30,
         newRate: 3,
+        newExpenseRate: 1,
       },
     ],
     incomes: [
       {
         newIncomeName: "",
-        newIncomeAmount: 0,
+        newIncomeAmount: 1,
         newAgeFrom: 20,
         newAgeTo: 30,
-        newRate: 3,
-        newBonus: 0,
+        newIncomeRate: 3,
+        newBonus: 1,
       },
     ],
     personalInformation: {
-      startingAge: 0,
-      startingSaving: 0,
-      retirementAge: 0,
-      lifeExpectancy: 0,
-      investmentPercentage: 0,
+      startingAge: 1,
+      startingSaving: 1,
+      retirementAge: 1,
+      lifeExpectancy: 1,
+      investmentPercentage: 1,
     },
     housingInfo: {
-      housePrice: 0,
-      targetAge: 0,
-      houseInterestRate: 0,
-      loanLength: 0,
-      downPayment: 0,
+      housePrice: 1,
+      targetAge: 1,
+      houseInterestRate: 1,
+      loanLength: 1,
+      downPayment: 1,
     },
     rates: {
       housePriceIndex: 1,
@@ -52,8 +53,7 @@ const initialState = {
 };
 
 export default function DataReducer(state = initialState, action) {
-  console.log("checking action", action.payload, action.inputData);
-  console.log(JSON.stringify(action.inputData));
+  console.log("checking action", action);
   switch (action.type) {
     case DATA_REDUCER: {
       return Object.assign({}, state, {

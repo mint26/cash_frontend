@@ -150,11 +150,11 @@ export default function IncomeCard() {
   const addIncome = () => {
     const newItem = {
       newIncomeName: "",
-      newIncomeAmount: 0,
+      newIncomeAmount: 1,
       newAgeFrom: 20,
       newAgeTo: 30,
       newRate: 3,
-      newBonus: 0,
+      newBonus: 1,
     };
     let newItems = [...items, newItem];
     setItems(newItems);

@@ -8,7 +8,7 @@ export const getProjectedValues = (inputData) => {
     console.log("result is", result);
     return dispatch({
       type: DATA_REDUCER,
-      payload: result.data,
+      payload: result,
       inputData: inputData,
     });
   };
