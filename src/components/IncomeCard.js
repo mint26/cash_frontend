@@ -47,7 +47,7 @@ export default function IncomeCard() {
 
   const handleChange = (e, index, fieldName) => {
     let newItems = items.slice();
-    newItems[index][fieldName] = parseInt(e.target.value);
+    newItems[index][fieldName] = e.target.value;
     setItems(newItems);
   };
   const dataRows = items

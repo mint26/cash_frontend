@@ -17,6 +17,7 @@ import LineChartCard from "../components/LineChartCard";
 const styles = (theme) => ({
   root: {
     flexGrow: 1,
+    margin: "0 auto",
   },
   tabs: {
     margin: theme.spacing(0, 0, 2, 0),

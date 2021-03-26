@@ -61,7 +61,7 @@ export default function LineChartCard() {
           <ComposedChart
             width={500}
             height={400}
-            data={data}
+            data={data.data}
             margin={{
               top: 20,
               right: 20,
@@ -70,7 +70,7 @@ export default function LineChartCard() {
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="age_range" />
+            <XAxis dataKey="age" />
             <YAxis />
             <Tooltip />
             <Legend />
