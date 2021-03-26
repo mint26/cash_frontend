@@ -47,7 +47,7 @@ export default function IncomeCard() {
 
   const handleChange = (e, index, fieldName) => {
     let newItems = items.slice();
-    newItems[index][fieldName] = e.target.value;
+    newItems[index][fieldName] = parseInt(e.target.value);
     setItems(newItems);
   };
   const dataRows = items
@@ -102,11 +102,11 @@ export default function IncomeCard() {
               <TextField
                 className={classes.txtField}
                 variant="standard"
-                name="newIncomeRate"
+                name="newRate"
                 type="number"
-                onChange={(e) => handleChange(e, index, "newIncomeRate")}
+                onChange={(e) => handleChange(e, index, "newRate")}
                 onBlur={handleOnBlur}
-                value={item.newIncomeRate}
+                value={item.newRate}
               />
             </TableCell>
             <TableCell>

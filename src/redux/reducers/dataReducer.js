@@ -9,7 +9,6 @@ const initialState = {
         newAgeFrom: 20,
         newAgeTo: 30,
         newRate: 3,
-        newExpenseRate: 1,
       },
     ],
     incomes: [
@@ -18,7 +17,7 @@ const initialState = {
         newIncomeAmount: 1,
         newAgeFrom: 20,
         newAgeTo: 30,
-        newIncomeRate: 3,
+        newRate: 3,
         newBonus: 1,
       },
     ],

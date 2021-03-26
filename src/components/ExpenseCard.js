@@ -102,11 +102,11 @@ export default function ExpenseCard() {
               <TextField
                 className={classes.txtField}
                 variant="standard"
-                name="newExpenseRate"
+                name="newRate"
                 type="text"
-                onChange={(e) => handleChange(e, index, "newExpenseRate")}
+                onChange={(e) => handleChange(e, index, "newRate")}
                 onBlur={handleOnBlur}
-                value={item.newExpenseRate}
+                value={item.newRate}
               />
             </TableCell>
           </TableRow>
