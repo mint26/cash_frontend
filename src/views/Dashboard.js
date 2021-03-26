@@ -1,16 +1,18 @@
 import React, { Component } from "react";
 import { withStyles } from "@material-ui/styles";
-import Tabs from "@material-ui/core/Tabs";
-import Tab from "@material-ui/core/Tab";
 import HousingTab from "./Tabs/HousingTab";
 import RetirementTab from "./Tabs/RetirementTab";
 import MarriageTab from "./Tabs/MarriageTab";
 import { TAB } from "../consts";
-import Button from "@material-ui/core/Button";
 import Grid from "@material-ui/core/Grid";
-import { getProjectedValues } from "../redux/personalInformationAction";
+import { getProjectedValues } from "../redux/inputDataAction";
 import { connect } from "react-redux";
-import Result from "./Result";
+import PersonalInfoCard from "../components/PersonalInfoCard";
+import HousingCard from "../components/HousingCard";
+import IncomeCard from "../components/IncomeCard";
+import ExpenseCard from "../components/ExpenseCard";
+import RateCard from "../components/RateCard";
+import LineChartCard from "../components/LineChartCard";
 
 const styles = (theme) => ({
   root: {
@@ -66,38 +68,48 @@ class Dashboard extends Component {
     const { classes } = this.props;
     return (
       <div className={classes.root}>
-        <Grid container>
-          <Grid item xs={8}>
-            <Tabs
-              value={this.state.selectedTab}
-              indicatorColor="primary"
-              textColor="primary"
-              onChange={this.handleChange}
-              aria-label="disabled tabs example"
-              className={classes.tabs}
-            >
-              <Tab label="Housing" value={TAB.HOUSING_TAB} />
-              <Tab label="Marriage" value={TAB.MARRIAGE_TAB} />
-              <Tab label="Retirement" value={TAB.RETIREMENT_TAB} />
-            </Tabs>
+        <Grid container spacing={2}>
+          <Grid container item xs={12} spacing={3}>
+            <>
+              <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
+                <LineChartCard />
+              </Grid>
+              <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
+                <Grid
+                  container
+                  className="MuiPaper-root MuiCard-root makeStyles-root-5 MuiPaper-elevation1 MuiPaper-rounded"
+                >
+                  <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
+                    <PersonalInfoCard />
+                  </Grid>
+                  <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
+                    <RateCard />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </>
           </Grid>
-          <Grid item xs={4} className={classes.moveright}>
-            <Button
-              variant="contained"
-              size="small"
-              color="primary"
-              type="submit"
-              onClick={this.showModal}
-            >
-              Calculate
-            </Button>
+          <Grid container item xs={12} spacing={3}>
+            <>
+              <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
+                <IncomeCard />
+              </Grid>
+              <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
+                <Grid
+                  container
+                  className="MuiPaper-root MuiCard-root makeStyles-root-5 MuiPaper-elevation1 MuiPaper-rounded"
+                >
+                  <Grid item xs={12} sm={8} md={8} lg={8} xl={8}>
+                    <ExpenseCard />
+                  </Grid>
+                  <Grid item xs={12} sm={4} md={4} lg={4} xl={4}>
+                    <HousingCard />
+                  </Grid>
+                </Grid>
+              </Grid>
+            </>
           </Grid>
         </Grid>
-        <Grid container>{this.state.currentTab}</Grid>
-        <Result
-          showModal={this.state.showModal}
-          handleClose={this.handleCloseModal}
-        />
       </div>
     );
   }

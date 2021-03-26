@@ -1,15 +1,13 @@
 import React, { useState } from "react";
-import { useFormik } from "formik";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import Grid from "@material-ui/core/Grid";
 import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import TextField from "@material-ui/core/TextField";
-import { useDispatch } from "react-redux";
-import { getProjectedValues } from "../redux/personalInformationAction";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjectedValues } from "../redux/inputDataAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -28,24 +26,24 @@ const useStyles = makeStyles((theme) => ({
 const PersonalInfoCard = ({ onSubmitStep }) => {
   const classes = useStyles();
   const dispatch = useDispatch();
-  const [initialValues] = useState({
-    startingAge: 0,
-    startingSaving: 0,
-    retirementAge: 0,
-    lifeExpectancy: 0,
-    investmentPercentage: 0,
-  });
-  const formik = useFormik({
-    enableReinitialize: true,
-    initialValues: initialValues,
-    onSubmit: (values) => {
-      dispatch(getProjectedValues(values));
-    },
-  });
+  const data = useSelector((state) => state.DataReducer.inputData);
+  const personalInfoData = data.personalInformation;
+  const [personalInfo, setPersonalInfo] = useState(personalInfoData);
 
-  const { values, handleChange, handleSubmit } = formik;
+  const handleChange = (e, fieldName) => {
+    let info = {};
+    info[fieldName] = e.target.value;
+    let newPersonalInfo = Object.assign({}, personalInfo, info);
+    setPersonalInfo(newPersonalInfo);
+  };
+  const handleOnBlur = () => {
+    let updatedData = Object.assign({}, data, {
+      personalInformation: personalInfo,
+    });
+    dispatch(getProjectedValues(updatedData));
+  };
   return (
-    <Card className={classes.root}>
+    <>
       <CardHeader
         title={
           <Typography
@@ -62,114 +60,117 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
         }}
       />
       <CardContent>
-        <form onSubmit={handleSubmit}>
-          <Grid container>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.label}
-                color="textSecondary"
-                gutterBottom
-              >
-                <label htmlFor="startingAge">Starting Age</label>
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="startingAge"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={handleChange}
-                value={values.startingAge}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.label}
-                color="textSecondary"
-                gutterBottom
-              >
-                <label htmlFor="startingSaving">Starting Saving</label>
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="startingSaving"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={handleChange}
-                value={values.startingSaving}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.label}
-                color="textSecondary"
-                gutterBottom
-              >
-                <label htmlFor="retirementAge">Retirement Age</label>
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="retirementAge"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={handleChange}
-                value={values.retirementAge}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.label}
-                color="textSecondary"
-                gutterBottom
-              >
-                <label htmlFor="lifeExpectancy">Life Expectancy</label>
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="lifeExpectancy"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={handleChange}
-                value={values.lifeExpectancy}
-              />
-            </Grid>
-            <Grid item xs={6}>
-              <Typography
-                className={classes.label}
-                color="textSecondary"
-                gutterBottom
-              >
-                <label htmlFor="investmentPercentage">
-                  Investment Percentage
-                </label>
-              </Typography>
-            </Grid>
-            <Grid item xs={6}>
-              <TextField
-                id="investmentPercentage"
-                type="number"
-                InputLabelProps={{
-                  shrink: true,
-                }}
-                onChange={handleChange}
-                value={values.investmentPercentage}
-              />
-            </Grid>
+        <Grid container>
+          <Grid item xs={8}>
+            <Typography
+              className={classes.label}
+              color="textSecondary"
+              gutterBottom
+            >
+              <label htmlFor="startingAge">Starting Age</label>
+            </Typography>
           </Grid>
-        </form>
+          <Grid item xs={4}>
+            <TextField
+              id="startingAge"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => handleChange(e, "startingAge")}
+              onBlur={handleOnBlur}
+              value={personalInfo.startingAge}
+            />
+          </Grid>
+          <Grid item xs={8}>
+            <Typography
+              className={classes.label}
+              color="textSecondary"
+              gutterBottom
+            >
+              <label htmlFor="startingSaving">Starting Saving</label>
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              id="startingSaving"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => handleChange(e, "startingSaving")}
+              onBlur={handleOnBlur}
+              value={personalInfo.startingSaving}
+            />
+          </Grid>
+          <Grid item xs={8}>
+            <Typography
+              className={classes.label}
+              color="textSecondary"
+              gutterBottom
+            >
+              <label htmlFor="retirementAge">Retirement Age</label>
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              id="retirementAge"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => handleChange(e, "retirementAge")}
+              onBlur={handleOnBlur}
+              value={personalInfo.retirementAge}
+            />
+          </Grid>
+          <Grid item xs={8}>
+            <Typography
+              className={classes.label}
+              color="textSecondary"
+              gutterBottom
+            >
+              <label htmlFor="lifeExpectancy">Life Expectancy</label>
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              id="lifeExpectancy"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => handleChange(e, "lifeExpectancy")}
+              onBlur={handleOnBlur}
+              value={personalInfo.lifeExpectancy}
+            />
+          </Grid>
+          <Grid item xs={8}>
+            <Typography
+              className={classes.label}
+              color="textSecondary"
+              gutterBottom
+            >
+              <label htmlFor="investmentPercentage">
+                Investment Percentage
+              </label>
+            </Typography>
+          </Grid>
+          <Grid item xs={4}>
+            <TextField
+              id="investmentPercentage"
+              type="number"
+              InputLabelProps={{
+                shrink: true,
+              }}
+              onChange={(e) => handleChange(e, "investmentPercentage")}
+              onBlur={handleOnBlur}
+              value={personalInfo.investmentPercentage}
+            />
+          </Grid>
+        </Grid>
       </CardContent>
-    </Card>
+    </>
   );
 };
 

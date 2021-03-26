@@ -11,13 +11,13 @@ export default function HousingTab() {
     <Grid container spacing={2}>
       <Grid container item xs={12} spacing={3}>
         <>
-          <Grid item xs={12} sm={6} md={2} lg={2} xl={2}>
+          <Grid item xs={12} sm={6} md={4} lg={2} xl={2}>
             <RateCard />
           </Grid>
-          <Grid item xs={12} sm={6} md={5} lg={5} xl={5}>
+          <Grid item xs={12} sm={6} md={4} lg={5} xl={5}>
             <PersonalInfoCard />
           </Grid>
-          <Grid item xs={12} sm={6} md={5} lg={5} xl={5}>
+          <Grid item xs={12} sm={6} md={4} lg={5} xl={5}>
             <HousingCard />
           </Grid>
         </>

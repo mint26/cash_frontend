@@ -7,12 +7,13 @@ import Typography from "@material-ui/core/Typography";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Grid from "@material-ui/core/Grid";
 import AddIcon from "@material-ui/icons/Add";
-import { useFormik } from "formik";
 import TextField from "@material-ui/core/TextField";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
 import CustomTable from "./Table";
 import Button from "@material-ui/core/Button";
+import { useDispatch, useSelector } from "react-redux";
+import { getProjectedValues } from "../redux/inputDataAction";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -32,20 +33,81 @@ const useStyles = makeStyles((theme) => ({
 
 export default function IncomeCard() {
   const classes = useStyles();
-  const [items, setItems] = useState([]);
-  const [initialValues] = useState({
-    newIncomeName: "",
-    newIncomeAmount: 0,
-  });
+  const dispatch = useDispatch();
+  const data = useSelector((state) => state.DataReducer.inputData);
+  const incomeData = data.incomes.slice();
+  let [items, setItems] = useState(incomeData);
+
+  const handleOnBlur = () => {
+    let updatedData = Object.assign({}, data, {
+      incomes: [...items],
+    });
+    dispatch(getProjectedValues(updatedData));
+  };
+
+  const handleChange = (e, index, fieldName) => {
+    let newItems = items.slice();
+    newItems[index][fieldName] = e.target.value;
+    setItems(newItems);
+  };
   const dataRows = items
     ? items.map((item, index) => {
         return (
           <TableRow key={`listItem${index}`}>
             <TableCell>
-              <Typography>{item.name}</Typography>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name={`"newAgeFrom"${index}`}
+                type="text"
+                onChange={(e) => handleChange(e, index, "newAgeFrom")}
+                onBlur={handleOnBlur}
+                value={item.newAgeFrom}
+              />
             </TableCell>
             <TableCell>
-              <Typography>{item.amount}</Typography>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name="newAgeTo"
+                type="text"
+                onChange={(e) => handleChange(e, index, "newAgeTo")}
+                onBlur={handleOnBlur}
+                value={item.newAgeTo}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name="newIncomeName"
+                type="text"
+                onChange={(e) => handleChange(e, index, "newIncomeName")}
+                onBlur={handleOnBlur}
+                value={item.newIncomeName}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name="newIncomeAmount"
+                type="text"
+                onChange={(e) => handleChange(e, index, "newIncomeAmount")}
+                onBlur={handleOnBlur}
+                value={item.newIncomeAmount}
+              />
+            </TableCell>
+            <TableCell>
+              <TextField
+                className={classes.txtField}
+                variant="standard"
+                name="newIncomeRate"
+                type="text"
+                onChange={(e) => handleChange(e, index, "newIncomeRate")}
+                onBlur={handleOnBlur}
+                value={item.newIncomeRate}
+              />
             </TableCell>
           </TableRow>
         );
@@ -54,28 +116,33 @@ export default function IncomeCard() {
   const dataHeader = (
     <TableRow>
       <TableCell>
+        <Typography>Age from</Typography>
+      </TableCell>
+      <TableCell>
+        <Typography>Age To</Typography>
+      </TableCell>
+      <TableCell>
         <Typography>Source of Income</Typography>
       </TableCell>
       <TableCell>
         <Typography>Amount</Typography>
       </TableCell>
+      <TableCell>
+        <Typography>Rate</Typography>
+      </TableCell>
     </TableRow>
   );
-  const formik = useFormik({
-    enableReinitialize: false,
-    initialValues: initialValues,
-  });
 
-  let { values, handleChange } = formik;
   const addIncome = () => {
     const newItem = {
-      name: values.newIncomeName,
-      amount: values.newIncomeAmount,
+      newIncomeName: "",
+      newIncomeAmount: 0,
+      newAgeFrom: 20,
+      newAgeTo: 30,
+      newRate: 3,
     };
     let newItems = [...items, newItem];
     setItems(newItems);
-    values.newIncomeName = "";
-    values.newIncomeAmount = 0;
   };
 
   return (
@@ -94,30 +161,11 @@ export default function IncomeCard() {
       />
       <CardContent>
         <Grid container>
-          <TextField
-            className={classes.txtField}
-            variant="outlined"
-            label="Source of income"
-            name="newIncomeName"
-            type="text"
-            onChange={handleChange}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={values.newIncomeName}
-          />
-          <TextField
-            className={classes.txtField}
-            variant="outlined"
-            label="Amount"
-            name="newIncomeAmount"
-            type="number"
-            onChange={handleChange}
-            InputLabelProps={{
-              shrink: true,
-            }}
-            value={values.newIncomeAmount}
-          />
+          <CustomTable
+            hasPagination={false}
+            dataRows={dataRows}
+            dataHeader={dataHeader}
+          ></CustomTable>
           <Button
             onClick={addIncome}
             variant="contained"
@@ -126,11 +174,6 @@ export default function IncomeCard() {
           >
             <AddIcon className={classes.icon} />
           </Button>
-          <CustomTable
-            hasPagination={false}
-            dataRows={dataRows}
-            dataHeader={dataHeader}
-          ></CustomTable>
         </Grid>
       </CardContent>
     </Card>
