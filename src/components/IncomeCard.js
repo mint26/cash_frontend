@@ -248,7 +248,7 @@ export default function IncomeCard() {
                                 )
                               }
                               onBlur={handleOnBlur}
-                              value={value.newRate * 100}
+                              value={value.newRate}
                               error={formik.errors}
                             />
                             {formik.errors[index] ? (
