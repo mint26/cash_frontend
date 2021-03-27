@@ -109,7 +109,7 @@ export default function IncomeCard() {
         <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Annual Inflation Rate</Typography>
+        <Typography>Annual Income Increment</Typography>
       </TableCell>
       <TableCell></TableCell>
     </TableRow>

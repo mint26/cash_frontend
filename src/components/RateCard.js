@@ -91,7 +91,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Housing Price Indexes"
+            label="Housing Price Index (%)"
             name="housePriceIndex"
             type="text"
             onChange={handleChange}
@@ -105,7 +105,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Investment ROI"
+            label="Investment ROI (%)"
             name="investmentRate"
             type="text"
             onChange={handleChange}
@@ -119,7 +119,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Bank Interest Rate"
+            label="Bank Interest Rate (%)"
             name="bankInterestRate"
             type="text"
             onChange={handleChange}

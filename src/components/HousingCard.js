@@ -106,7 +106,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="targetAge">Age to buy house</label>
+              <label htmlFor="targetAge">Purchase Age</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -128,7 +128,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="houseInterestRate">Loan Interest Rate</label>
+              <label htmlFor="houseInterestRate">Loan Interest Rate (%)</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
@@ -150,7 +150,7 @@ export default function HousingCard() {
               color="textSecondary"
               gutterBottom
             >
-              <label htmlFor="downPayment">Downpayment</label>
+              <label htmlFor="downPayment">Downpayment (%)</label>
             </Typography>
           </Grid>
           <Grid item xs={4}>
