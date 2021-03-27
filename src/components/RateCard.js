@@ -91,7 +91,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Housing Price Index"
+            label="Housing Price Index (%)"
             name="housePriceIndex"
             type="text"
             onChange={handleChange}
