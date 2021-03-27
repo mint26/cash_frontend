@@ -290,7 +290,7 @@ export default function IncomeCard() {
   );
 
   return (
-    <Card>
+    <Card className={classes.root}>
       <CardHeader
         title={
           <Typography
