@@ -39,7 +39,7 @@ const PersonalInfoCard = () => {
       startingSaving: Yup.number().min(1).required("Required"),
       retirementAge: Yup.number().min(1).required("Required"),
       lifeExpectancy: Yup.number().min(1).required("Required"),
-      investmentPercentage: Yup.number().min(1).required("Required"),
+      investmentPercentage: Yup.number().required("Required"),
     }),
   });
   // const handleOnChange = (e, fieldName) => {

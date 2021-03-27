@@ -33,17 +33,11 @@ export default function RateCard() {
   const formik = useFormik({
     initialValues: ratesData,
     validationSchema: Yup.object({
-      housePriceIndex: Yup.number().min(1).required("Required"),
-      investmentRate: Yup.number().min(1).required("Required"),
-      bankInterestRate: Yup.number().min(1).required("Required"),
+      housePriceIndex: Yup.number().required("Required"),
+      investmentRate: Yup.number().required("Required"),
+      bankInterestRate: Yup.number().required("Required"),
     }),
   });
-  // const handleChange = (e, fieldName) => {
-  //   let info = {};
-  //   info[fieldName] = e.target.value;
-  //   let newRates = Object.assign({}, rates, info);
-  //   setRates(newRates);
-  // };
   const handleOnBlur = () => {
     let rateData = Object.assign({}, formik.values);
     rateData.housePriceIndex = rateData.housePriceIndex

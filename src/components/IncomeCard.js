@@ -47,6 +47,9 @@ const useStyles = makeStyles((theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
+  tableCell: {
+    borderBottom: "solid 1px",
+  },
 }));
 
 export default function IncomeCard() {
@@ -137,7 +140,7 @@ export default function IncomeCard() {
                         <TableCell>
                           <FormControl>
                             <Field
-                              className="MuiInputBase-input MuiInput-input"
+                              className={`MuiInputBase-input MuiInput-input ${classes.tableCell}`}
                               variant="standard"
                               name={`incomes.${index}.newIncomeName`}
                               type="text"
@@ -162,7 +165,7 @@ export default function IncomeCard() {
                         <TableCell>
                           <>
                             <Field
-                              className="MuiInputBase-input MuiInput-input"
+                              className={`MuiInputBase-input MuiInput-input ${classes.tableCell}`}
                               variant="standard"
                               name={`incomes.${index}.newAgeFrom`}
                               type="text"
@@ -186,7 +189,7 @@ export default function IncomeCard() {
                         <TableCell>
                           <>
                             <Field
-                              className="MuiInputBase-input MuiInput-input"
+                              className={`MuiInputBase-input MuiInput-input ${classes.tableCell}`}
                               variant="standard"
                               name={`incomes.${index}.newAgeTo`}
                               type="text"
@@ -210,7 +213,7 @@ export default function IncomeCard() {
                         <TableCell>
                           <>
                             <Field
-                              className="MuiInputBase-input MuiInput-input"
+                              className={`MuiInputBase-input MuiInput-input ${classes.tableCell}`}
                               variant="standard"
                               name={`incomes.${index}.newIncomeAmount`}
                               type="text"
@@ -234,7 +237,7 @@ export default function IncomeCard() {
                         <TableCell>
                           <>
                             <Field
-                              className="MuiInputBase-input MuiInput-input"
+                              className={`MuiInputBase-input MuiInput-input ${classes.tableCell}`}
                               variant="standard"
                               name={`incomes.${index}.newRate`}
                               type="text"
