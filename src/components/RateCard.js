@@ -105,7 +105,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Investment Annual Rate of Return (%)"
+            label="Investment Annual Rate (%)"
             name="investmentRate"
             type="text"
             onChange={handleChange}
@@ -119,7 +119,7 @@ export default function RateCard() {
           <TextField
             className={classes.txtField}
             variant="outlined"
-            label="Savings Annual Interest Rate (%)"
+            label="Savings Annual Rate (%)"
             name="bankInterestRate"
             type="text"
             onChange={handleChange}
