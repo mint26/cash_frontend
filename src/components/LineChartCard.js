@@ -19,6 +19,7 @@ import AssessmentIcon from "@material-ui/icons/Assessment";
 import Typography from "@material-ui/core/Typography";
 import { useSelector } from "react-redux";
 import Grid from "@material-ui/core/Grid";
+import Paper from "@material-ui/core/Paper";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,6 +34,18 @@ const useStyles = makeStyles((theme) => ({
   },
   title: {
     fontSize: 18,
+  },
+  spanText: {
+    fontWeight: "bold",
+  },
+  paper: {
+    backgroundColor: "#FFFFB7",
+    padding: theme.spacing(2),
+    width: "60%",
+  },
+  gridContainer: {
+    display: "flex",
+    justifyContent: "center",
   },
 }));
 
@@ -116,37 +129,57 @@ export default function LineChartCard() {
             />
           </ComposedChart>
         </ResponsiveContainer>
-        <Grid container>
-          <Grid item xs={12}>
-            <Typography>
-              {`First age when you net assets reach 0 is ${data.zero_savings_age}`}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              {`You can increase your expenses by ${data.potential_max_expenses}`}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              {`You can reduce your income by ${data.maximum_income_reduction}`}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              {`Your earliest retirement age is ${data.recommended_retirement_age}`}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              {`Your lowest investment rate is ${data.minimum_investment_rate}`}
-            </Typography>
-          </Grid>
-          <Grid item xs={12}>
-            <Typography>
-              {`Your lowest investment allocation is ${data.minimum_investment_percentage}`}
-            </Typography>
-          </Grid>
+        <Grid container className={classes.gridContainer}>
+          <Paper className={classes.paper}>
+            <Grid item xs={12}>
+              <Typography>
+                First age when you net assets reach 0 is{" "}
+                <span className={classes.spanText}>
+                  {data.zero_savings_age}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                You can increase your expenses by{" "}
+                <span className={classes.spanText}>
+                  {data.potential_max_expenses}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                You can reduce your income by{" "}
+                <span className={classes.spanText}>
+                  {data.maximum_income_reduction}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                Your earliest retirement age is{" "}
+                <span className={classes.spanText}>
+                  {data.recommended_retirement_age}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                Your lowest investment rate is{" "}
+                <span className={classes.spanText}>
+                  {data.minimum_investment_rate}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                Your lowest investment allocation is{" "}
+                <span className={classes.spanText}>
+                  {data.minimum_investment_percentage}
+                </span>
+              </Typography>
+            </Grid>
+          </Paper>
         </Grid>
       </CardContent>
     </Card>

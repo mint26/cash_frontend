@@ -5,6 +5,7 @@ import CardHeader from "@material-ui/core/CardHeader";
 import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
+import DeleteIcon from "@material-ui/icons/Delete";
 import Grid from "@material-ui/core/Grid";
 import AddIcon from "@material-ui/icons/Add";
 import TableRow from "@material-ui/core/TableRow";
@@ -110,12 +111,14 @@ export default function IncomeCard() {
       <TableCell>
         <Typography>Annual Inflation Rate</Typography>
       </TableCell>
+      <TableCell></TableCell>
     </TableRow>
   );
 
   const addIncome = () => {
+    let len = formik.values ? formik.values.length : 0;
     const newItem = {
-      newIncomeName: "Income",
+      newIncomeName: "Income " + (len + 1),
       newIncomeAmount: 1,
       newAgeFrom: 20,
       newAgeTo: 30,
@@ -123,6 +126,14 @@ export default function IncomeCard() {
     };
     let newItems = [...formik.values];
     newItems.push(newItem);
+    formik.setValues(newItems);
+  };
+
+  const removeIncome = (e, index) => {
+    let newItems = [...formik.values];
+    newItems = newItems.filter(function (value, i, arr) {
+      return i != index;
+    });
     formik.setValues(newItems);
   };
 
@@ -259,6 +270,13 @@ export default function IncomeCard() {
                               <div>{formik.errors[index].newRate}</div>
                             ) : null}
                           </>
+                        </TableCell>
+                        <TableCell>
+                          {index ? (
+                            <span onClick={(e) => removeIncome(e, index)}>
+                              <DeleteIcon />
+                            </span>
+                          ) : null}
                         </TableCell>
                       </TableRow>
                     );

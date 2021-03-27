@@ -4,7 +4,7 @@ const initialState = {
   inputData: {
     expenses: [
       {
-        newExpenseName: "Expense",
+        newExpenseName: "Expense 1",
         newExpenseAmount: 100,
         newAgeFrom: 21,
         newAgeTo: 25,
@@ -13,7 +13,7 @@ const initialState = {
     ],
     incomes: [
       {
-        newIncomeName: "Income",
+        newIncomeName: "Income 1",
         newIncomeAmount: 4000,
         newAgeFrom: 21,
         newAgeTo: 25,

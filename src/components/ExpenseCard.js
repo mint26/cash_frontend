@@ -19,6 +19,7 @@ import _ from "lodash";
 import Table from "@material-ui/core/Table";
 import TableHead from "@material-ui/core/TableHead";
 import TableBody from "@material-ui/core/TableBody";
+import DeleteIcon from "@material-ui/icons/Delete";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -106,8 +107,9 @@ export default function ExpenseCard() {
   );
 
   const addExpense = () => {
+    let len = formik.values ? formik.values.length : 0;
     const newItem = {
-      newExpenseName: "expense",
+      newExpenseName: "expense " + (len + 1),
       newExpenseAmount: 1,
       newAgeFrom: 20,
       newAgeTo: 30,
@@ -115,6 +117,14 @@ export default function ExpenseCard() {
     };
     let newItems = [...formik.values];
     newItems.push(newItem);
+    formik.setValues(newItems);
+  };
+
+  const removeIncome = (e, index) => {
+    let newItems = [...formik.values];
+    newItems = newItems.filter(function (value, i, arr) {
+      return i != index;
+    });
     formik.setValues(newItems);
   };
 
@@ -251,6 +261,13 @@ export default function ExpenseCard() {
                               <div>{formik.errors[index].newRate}</div>
                             ) : null}
                           </>
+                        </TableCell>
+                        <TableCell>
+                          {index ? (
+                            <span onClick={(e) => removeIncome(e, index)}>
+                              <DeleteIcon />
+                            </span>
+                          ) : null}
                         </TableCell>
                       </TableRow>
                     );
