@@ -13,10 +13,6 @@ import * as Yup from "yup";
 import _ from "lodash";
 
 const useStyles = makeStyles((theme) => ({
-  root: {
-    minWidth: 275,
-    height: "100%",
-  },
   title: {
     fontSize: 18,
   },

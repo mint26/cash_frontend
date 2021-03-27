@@ -27,6 +27,10 @@ const styles = (theme) => ({
     display: "flex",
     justifyContent: "flex-end",
   },
+  personalInfoRoot: {
+    minWidth: 275,
+    height: "100%",
+  },
 });
 
 class Dashboard extends Component {
@@ -37,6 +41,7 @@ class Dashboard extends Component {
       selectedTab: "housing",
       showModal: false,
     };
+    console.log("checking props", props);
   }
   handleChange = (e, newValue) => {
     let nextTab = <HousingTab />;
@@ -75,7 +80,7 @@ class Dashboard extends Component {
               <Grid item xs={12} sm={5} md={5} lg={5} xl={5}>
                 <Grid
                   container
-                  className="MuiPaper-root MuiCard-root makeStyles-root-5 MuiPaper-elevation1 MuiPaper-rounded"
+                  className={`MuiPaper-root MuiCard-root makeStyles-root-5 MuiPaper-elevation1 MuiPaper-rounded ${classes.personalInfoRoot}`}
                 >
                   <Grid item xs={12} sm={7} md={7} lg={7} xl={7}>
                     <PersonalInfoCard />
