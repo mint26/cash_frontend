@@ -1,19 +1,24 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
-import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
 import Typography from "@material-ui/core/Typography";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Grid from "@material-ui/core/Grid";
 import AddIcon from "@material-ui/icons/Add";
-import TextField from "@material-ui/core/TextField";
 import TableRow from "@material-ui/core/TableRow";
 import TableCell from "@material-ui/core/TableCell";
-import CustomTable from "./Table";
+import { FormControl } from "@material-ui/core";
+// import CustomTable from "./Table";
 import Button from "@material-ui/core/Button";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectedValues } from "../redux/inputDataAction";
+import { useFormik, FieldArray, Field, FormikProvider } from "formik";
+import * as Yup from "yup";
+import _ from "lodash";
+import Table from "@material-ui/core/Table";
+import TableHead from "@material-ui/core/TableHead";
+import TableBody from "@material-ui/core/TableBody";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,8 +31,21 @@ const useStyles = makeStyles((theme) => ({
   icon: {
     fontSize: 25,
   },
+  tableHeaderCell: {
+    fontSize: theme.fontSize,
+  },
   txtField: {
     margin: theme.spacing(0, 2, 0, 0),
+  },
+  tableContainer: {
+    margin: theme.spacing(2, 0),
+  },
+  addBtn: {
+    margin: theme.spacing(2, 0),
+  },
+  btnDiv: {
+    display: "flex",
+    justifyContent: "flex-end",
   },
 }));
 
@@ -36,101 +54,48 @@ export default function IncomeCard() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.DataReducer.inputData);
   const incomeData = data.incomes.slice();
-  let [items, setItems] = useState(incomeData);
-
-  const handleOnBlur = () => {
-    let updatedData = Object.assign({}, data, {
-      incomes: [...items],
-    });
-    dispatch(getProjectedValues(updatedData));
-  };
-
-  const handleChange = (e, index, fieldName) => {
-    let newItems = items.slice();
-    newItems[index][fieldName] = e.target.value;
-    setItems(newItems);
-  };
-  const dataRows = items
-    ? items.map((item, index) => {
-        return (
-          <TableRow key={`listItem${index}`}>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newIncomeName"
-                type="text"
-                onChange={(e) => handleChange(e, index, "newIncomeName")}
-                onBlur={handleOnBlur}
-                value={item.newIncomeName}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name={`"newAgeFrom"${index}`}
-                type="number"
-                onChange={(e) => handleChange(e, index, "newAgeFrom")}
-                onBlur={handleOnBlur}
-                value={item.newAgeFrom}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newAgeTo"
-                type="number"
-                onChange={(e) => handleChange(e, index, "newAgeTo")}
-                onBlur={handleOnBlur}
-                value={item.newAgeTo}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newIncomeAmount"
-                type="number"
-                onChange={(e) => handleChange(e, index, "newIncomeAmount")}
-                onBlur={handleOnBlur}
-                value={item.newIncomeAmount}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newRate"
-                type="number"
-                onChange={(e) => handleChange(e, index, "newRate")}
-                onBlur={handleOnBlur}
-                value={item.newRate}
-              />
-            </TableCell>
-            <TableCell>
-              <TextField
-                className={classes.txtField}
-                variant="standard"
-                name="newBonus"
-                type="number"
-                onChange={(e) => handleChange(e, index, "newBonus")}
-                onBlur={handleOnBlur}
-                value={item.newBonus}
-              />
-            </TableCell>
-          </TableRow>
-        );
+  // let [items, setItems] = useState(incomeData);
+  const formik = useFormik({
+    initialValues: incomeData,
+    validationSchema: Yup.array().of(
+      Yup.object({
+        newIncomeName: Yup.string().required("Required"),
+        newIncomeAmount: Yup.number().min(1).required("Required"),
+        newAgeFrom: Yup.number().min(1).required("Required"),
+        newAgeTo: Yup.number().min(1).required("Required"),
+        newRate: Yup.number().required("Required"),
       })
-    : [];
+    ),
+  });
+  const handleChangeIncome = (e, field, values, setValues, index) => {
+    // let items = [...values];
+    values[index][field] = e.target.value;
+    const newItems = [...values];
+    setValues(newItems);
+
+    // call formik onChange method
+    // field.onChange(e);
+
+    // let newItems = items.slice();
+    // newItems[index][fieldName] = e.target.value;
+    // setItems(newItems);
+  };
+  const handleOnBlur = () => {
+    let values = [...formik.values];
+    let updatedData = Object.assign({}, data, {
+      incomes: values,
+    });
+    if (_.isEmpty(formik.errors)) {
+      dispatch(getProjectedValues(updatedData));
+    }
+  };
   const dataHeader = (
     <TableRow>
       <TableCell>
         <Typography>Source of Income</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Age From</Typography>
+        <Typography>Age from</Typography>
       </TableCell>
       <TableCell>
         <Typography>Age To</Typography>
@@ -139,29 +104,171 @@ export default function IncomeCard() {
         <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Bonus (Months)</Typography>
-      </TableCell>
-      <TableCell>
-        <Typography>Annual Rate of increase</Typography>
+        <Typography>Annual Inflation Rate</Typography>
       </TableCell>
     </TableRow>
   );
 
   const addIncome = () => {
     const newItem = {
-      newIncomeName: "",
+      newIncomeName: "Income",
       newIncomeAmount: 1,
       newAgeFrom: 20,
       newAgeTo: 30,
-      newRate: 3,
-      newBonus: 1,
+      newRate: 0.03,
     };
-    let newItems = [...items, newItem];
-    setItems(newItems);
+    let newItems = [...formik.values];
+    newItems.push(newItem);
+    formik.setValues(newItems);
   };
 
+  const content = (
+    <FormikProvider value={formik}>
+      <FieldArray
+        name="incomes"
+        render={() => {
+          let { values, setValues } = formik;
+          return (
+            <>
+              {values
+                ? values.map((value, index) => {
+                    return (
+                      <TableRow key={`listItem${index}`}>
+                        <TableCell>
+                          <FormControl>
+                            <Field
+                              className="MuiInputBase-input MuiInput-input"
+                              variant="standard"
+                              name={`incomes.${index}.newIncomeName`}
+                              type="text"
+                              onChange={(e) =>
+                                handleChangeIncome(
+                                  e,
+                                  "newIncomeName",
+                                  values,
+                                  setValues,
+                                  index
+                                )
+                              }
+                              onBlur={handleOnBlur}
+                              value={value.newIncomeName}
+                            />
+
+                            {formik.errors[index] ? (
+                              <div>{formik.errors[index].newIncomeName}</div>
+                            ) : null}
+                          </FormControl>
+                        </TableCell>
+                        <TableCell>
+                          <>
+                            <Field
+                              className="MuiInputBase-input MuiInput-input"
+                              variant="standard"
+                              name={`incomes.${index}.newAgeFrom`}
+                              type="text"
+                              onChange={(e) =>
+                                handleChangeIncome(
+                                  e,
+                                  "newAgeFrom",
+                                  values,
+                                  setValues,
+                                  index
+                                )
+                              }
+                              onBlur={handleOnBlur}
+                              value={value.newAgeFrom}
+                            />
+                            {formik.errors[index] ? (
+                              <div>{formik.errors[index].newAgeFrom}</div>
+                            ) : null}
+                          </>
+                        </TableCell>
+                        <TableCell>
+                          <>
+                            <Field
+                              className="MuiInputBase-input MuiInput-input"
+                              variant="standard"
+                              name={`incomes.${index}.newAgeTo`}
+                              type="text"
+                              onChange={(e) =>
+                                handleChangeIncome(
+                                  e,
+                                  "newAgeTo",
+                                  values,
+                                  setValues,
+                                  index
+                                )
+                              }
+                              onBlur={handleOnBlur}
+                              value={value.newAgeTo}
+                            />
+                            {formik.errors[index] ? (
+                              <div>{formik.errors[index].newAgeTo}</div>
+                            ) : null}
+                          </>
+                        </TableCell>
+                        <TableCell>
+                          <>
+                            <Field
+                              className="MuiInputBase-input MuiInput-input"
+                              variant="standard"
+                              name={`incomes.${index}.newIncomeAmount`}
+                              type="text"
+                              onChange={(e) =>
+                                handleChangeIncome(
+                                  e,
+                                  "newIncomeAmount",
+                                  values,
+                                  setValues,
+                                  index
+                                )
+                              }
+                              onBlur={handleOnBlur}
+                              value={value.newIncomeAmount}
+                            />
+                            {formik.errors[index] ? (
+                              <div>{formik.errors[index].newIncomeAmount}</div>
+                            ) : null}
+                          </>
+                        </TableCell>
+                        <TableCell>
+                          <>
+                            <Field
+                              className="MuiInputBase-input MuiInput-input"
+                              variant="standard"
+                              name={`incomes.${index}.newRate`}
+                              type="text"
+                              onChange={(e) =>
+                                handleChangeIncome(
+                                  e,
+                                  "newRate",
+                                  values,
+                                  setValues,
+                                  index
+                                )
+                              }
+                              onBlur={handleOnBlur}
+                              value={value.newRate * 100}
+                              error={formik.errors}
+                            />
+                            {formik.errors[index] ? (
+                              <div>{formik.errors[index].newRate}</div>
+                            ) : null}
+                          </>
+                        </TableCell>
+                      </TableRow>
+                    );
+                  })
+                : null}
+            </>
+          );
+        }}
+      ></FieldArray>
+    </FormikProvider>
+  );
+
   return (
-    <Card className={classes.root}>
+    <>
       <CardHeader
         title={
           <Typography
@@ -176,21 +283,25 @@ export default function IncomeCard() {
       />
       <CardContent>
         <Grid container>
-          <CustomTable
-            hasPagination={false}
-            dataRows={dataRows}
-            dataHeader={dataHeader}
-          ></CustomTable>
-          <Button
-            onClick={addIncome}
-            variant="contained"
-            size="small"
-            color="primary"
-          >
-            <AddIcon className={classes.icon} />
-          </Button>
+          <Grid item xs={12}>
+            <Table className={classes.tableContainer}>
+              <TableHead>{dataHeader}</TableHead>
+              <TableBody>{content}</TableBody>
+            </Table>
+          </Grid>
+          <Grid item xs={12} className={classes.btnDiv}>
+            <Button
+              onClick={addIncome}
+              variant="contained"
+              size="small"
+              color="primary"
+              className={classes.addBtn}
+            >
+              <AddIcon className={classes.icon} />
+            </Button>
+          </Grid>
         </Grid>
       </CardContent>
-    </Card>
+    </>
   );
 }

@@ -4,41 +4,41 @@ const initialState = {
   inputData: {
     expenses: [
       {
-        newExpenseName: "",
+        newExpenseName: "Expense",
         newExpenseAmount: 100,
-        newAgeFrom: 4,
-        newAgeTo: 19,
+        newAgeFrom: 21,
+        newAgeTo: 25,
         newRate: 0.0252,
       },
     ],
     incomes: [
       {
-        newIncomeName: "",
-        newIncomeAmount: 220,
-        newAgeFrom: 4,
-        newAgeTo: 20,
+        newIncomeName: "Income",
+        newIncomeAmount: 4000,
+        newAgeFrom: 21,
+        newAgeTo: 25,
         newRate: 0.042,
         newBonus: 2,
       },
     ],
     personalInformation: {
-      startingAge: 3,
+      startingAge: 21,
       startingSaving: 5000,
       retirementAge: 12,
-      lifeExpectancy: 20,
+      lifeExpectancy: 80,
       investmentPercentage: 0.3,
     },
     housingInfo: {
       housePrice: 2500,
       targetAge: 4,
-      houseInterestRate: 0.026,
+      houseInterestRate: 2.6,
       loanLength: 15,
       downPayment: 0.1,
     },
     rates: {
-      housePriceIndex: 0.0596,
+      housePriceIndex: 5.96,
       investmentRate: 0.1,
-      bankInterestRate: 0.01,
+      bankInterestRate: 0.1,
     },
   },
   data: {
@@ -52,7 +52,6 @@ const initialState = {
 };
 
 export default function DataReducer(state = initialState, action) {
-  console.log("checking action", action);
   switch (action.type) {
     case DATA_REDUCER: {
       return Object.assign({}, state, {

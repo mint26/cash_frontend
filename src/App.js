@@ -10,6 +10,7 @@ const useStyles = makeStyles((theme) => ({
   root: {
     margin: theme.spacing(2, "auto"),
     padding: 0,
+    maxWidth: "90vw",
   },
 }));
 
@@ -24,7 +25,7 @@ export default function App() {
           </Typography>
         </Toolbar>
       </AppBar>
-      <Container className={classes.root}>
+      <Container className={classes.root} maxWidth="false">
         <Dashboard />
       </Container>
     </div>

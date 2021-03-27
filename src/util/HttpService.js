@@ -1,5 +1,6 @@
 const https = require("https");
 const API_URL = process.env.REACT_APP_API_URL;
+
 // const API_END_POINTS = {
 //   categories: "/categories",
 //   posts: "/posts",
@@ -52,11 +53,6 @@ const METHOD = {
   PUT: "PUT",
 };
 class HttpService {
-  //   getPostsByCategories = category => {
-  //     let url = `${API_URL}/{category}${API_END_POINTS.posts}`;
-  //     url = interpolateURL(url, category);
-  //     return getRequest(METHOD.GET, url);
-  //   };
   getProjectedValues = (data) => {
     let url = `${API_URL}/api/calculate`;
     return getRequest(METHOD.POST, url, data);

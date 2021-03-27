@@ -10,6 +10,7 @@ import {
   Tooltip,
   Legend,
   ResponsiveContainer,
+  Label,
 } from "recharts";
 import Card from "@material-ui/core/Card";
 import CardContent from "@material-ui/core/CardContent";
@@ -38,7 +39,6 @@ const useStyles = makeStyles((theme) => ({
 export default function LineChartCard() {
   const data = useSelector((state) => state.DataReducer.data);
   const classes = useStyles();
-  console.log("getting data", data);
   return (
     <Card className={classes.root}>
       <CardContent>
@@ -71,12 +71,49 @@ export default function LineChartCard() {
           >
             <CartesianGrid stroke="#f5f5f5" />
             <XAxis dataKey="age" />
-            <YAxis />
+            <YAxis
+              width={80}
+              yAxisId="left"
+              orientation="left"
+              tick={{ fontSize: 10 }}
+            >
+              <Label
+                value={"Total"}
+                angle={-90}
+                position="outside"
+                fill="#676767"
+                fontSize={14}
+              />
+            </YAxis>
+            <YAxis
+              width={80}
+              yAxisId="right"
+              orientation="right"
+              tick={{ fontSize: 10 }}
+            >
+              <Label
+                value={"Total"}
+                angle={-90}
+                position="outside"
+                fill="#676767"
+                fontSize={14}
+              />
+            </YAxis>
             <Tooltip />
             <Legend />
-            <Bar dataKey="total" barSize={20} fill="#413ea0" />
-            <Line type="monotone" dataKey="income" stroke="#ff7300" />
-            <Line type="monotone" dataKey="expense" stroke="#008000" />
+            <Bar dataKey="total" yAxisId="left" barSize={20} fill="#413ea0" />
+            <Line
+              type="monotone"
+              dataKey="income"
+              yAxisId="right"
+              stroke="#ff7300"
+            />
+            <Line
+              type="monotone"
+              dataKey="expense"
+              yAxisId="right"
+              stroke="#008000"
+            />
           </ComposedChart>
         </ResponsiveContainer>
         <Grid container>

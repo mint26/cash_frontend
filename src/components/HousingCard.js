@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -8,6 +8,9 @@ import HouseIcon from "@material-ui/icons/House";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectedValues } from "../redux/inputDataAction";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import _ from "lodash";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -33,20 +36,29 @@ export default function HousingCard() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.DataReducer.inputData);
   const housingInfoData = data.housingInfo;
-  const [housingInfo, setHousingInfo] = useState(housingInfoData);
+  const formik = useFormik({
+    initialValues: housingInfoData,
+    validationSchema: Yup.object({
+      housePrice: Yup.number().min(1).required("Required"),
+      targetAge: Yup.number().min(1).required("Required"),
+      houseInterestRate: Yup.number().required("Required"),
+      loanLength: Yup.number().min(1).required("Required"),
+      downPayment: Yup.number().required("Required"),
+    }),
+  });
 
-  const handleChange = (e, fieldName) => {
-    let info = {};
-    info[fieldName] = e.target.value;
-    let newHousingInfo = Object.assign({}, housingInfo, info);
-    setHousingInfo(newHousingInfo);
-  };
   const handleOnBlur = () => {
+    let housingData = Object.assign({}, formik.values);
     let updatedData = Object.assign({}, data, {
-      housingInfo: housingInfo,
+      housingInfo: housingData,
     });
-    dispatch(getProjectedValues(updatedData));
+
+    if (_.isEmpty(formik.errors)) {
+      dispatch(getProjectedValues(updatedData));
+    }
   };
+
+  let { values, handleChange } = formik;
   return (
     <>
       <CardHeader
@@ -82,9 +94,10 @@ export default function HousingCard() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "housePrice")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={housingInfo.housePrice}
+              value={values.housePrice}
+              error={formik.errors.housePrice}
             />
           </Grid>
           <Grid item xs={8}>
@@ -103,9 +116,10 @@ export default function HousingCard() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "targetAge")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={housingInfo.targetAge}
+              value={values.targetAge}
+              error={formik.errors.targetAge}
             />
           </Grid>
           <Grid item xs={8}>
@@ -124,9 +138,10 @@ export default function HousingCard() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "targetAge")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={housingInfo.houseInterestRate}
+              value={values.houseInterestRate}
+              error={formik.errors.houseInterestRate}
             />
           </Grid>
           <Grid item xs={8}>
@@ -145,9 +160,10 @@ export default function HousingCard() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "downPayment")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={housingInfo.downPayment}
+              value={values.downPayment}
+              error={formik.errors.downPayment}
             />
           </Grid>
           <Grid item xs={8}>
@@ -166,9 +182,10 @@ export default function HousingCard() {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "loanLength")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={housingInfo.loanLength}
+              value={values.loanLength}
+              error={formik.errors.loanLength}
             />
           </Grid>
         </Grid>

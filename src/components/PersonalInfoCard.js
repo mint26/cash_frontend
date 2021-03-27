@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -8,6 +8,9 @@ import PermIdentityIcon from "@material-ui/icons/PermIdentity";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectedValues } from "../redux/inputDataAction";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import _ from "lodash";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -23,25 +26,39 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-const PersonalInfoCard = ({ onSubmitStep }) => {
+const PersonalInfoCard = () => {
   const classes = useStyles();
   const dispatch = useDispatch();
   const data = useSelector((state) => state.DataReducer.inputData);
   const personalInfoData = data.personalInformation;
-  const [personalInfo, setPersonalInfo] = useState(personalInfoData);
-
-  const handleChange = (e, fieldName) => {
-    let info = {};
-    info[fieldName] = e.target.value;
-    let newPersonalInfo = Object.assign({}, personalInfo, info);
-    setPersonalInfo(newPersonalInfo);
-  };
+  // const [personalInfo, setPersonalInfo] = useState(personalInfoData);
+  const formik = useFormik({
+    initialValues: personalInfoData,
+    validationSchema: Yup.object({
+      startingAge: Yup.number().min(1).required("Required"),
+      startingSaving: Yup.number().min(1).required("Required"),
+      retirementAge: Yup.number().min(1).required("Required"),
+      lifeExpectancy: Yup.number().min(1).required("Required"),
+      investmentPercentage: Yup.number().min(1).required("Required"),
+    }),
+  });
+  // const handleOnChange = (e, fieldName) => {
+  //   let info = {};
+  //   info[fieldName] = e.target.value;
+  //   let newPersonalInfo = Object.assign({}, personalInfo, info);
+  //   setPersonalInfo(newPersonalInfo);
+  // };
   const handleOnBlur = () => {
+    let personalInfo = Object.assign({}, formik.values);
     let updatedData = Object.assign({}, data, {
       personalInformation: personalInfo,
     });
-    dispatch(getProjectedValues(updatedData));
+    if (_.isEmpty(formik.errors)) {
+      dispatch(getProjectedValues(updatedData));
+    }
   };
+
+  let { values, handleChange } = formik;
   return (
     <>
       <CardHeader
@@ -77,9 +94,10 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "startingAge")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={personalInfo.startingAge}
+              value={values.startingAge}
+              error={formik.errors.startingAge}
             />
           </Grid>
           <Grid item xs={8}>
@@ -98,9 +116,10 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "startingSaving")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={personalInfo.startingSaving}
+              value={values.startingSaving}
+              error={formik.errors.startingSaving}
             />
           </Grid>
           <Grid item xs={8}>
@@ -119,9 +138,10 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "retirementAge")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={personalInfo.retirementAge}
+              value={values.retirementAge}
+              error={formik.errors.retirementAge}
             />
           </Grid>
           <Grid item xs={8}>
@@ -140,9 +160,10 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "lifeExpectancy")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={personalInfo.lifeExpectancy}
+              value={values.lifeExpectancy}
+              error={formik.errors.lifeExpectancy}
             />
           </Grid>
           <Grid item xs={8}>
@@ -163,9 +184,10 @@ const PersonalInfoCard = ({ onSubmitStep }) => {
               InputLabelProps={{
                 shrink: true,
               }}
-              onChange={(e) => handleChange(e, "investmentPercentage")}
+              onChange={handleChange}
               onBlur={handleOnBlur}
-              value={personalInfo.investmentPercentage}
+              value={values.investmentPercentage}
+              error={formik.errors.investmentPercentage}
             />
           </Grid>
         </Grid>

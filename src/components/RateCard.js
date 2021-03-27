@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
@@ -8,6 +8,9 @@ import Grid from "@material-ui/core/Grid";
 import TextField from "@material-ui/core/TextField";
 import { useDispatch, useSelector } from "react-redux";
 import { getProjectedValues } from "../redux/inputDataAction";
+import { useFormik } from "formik";
+import * as Yup from "yup";
+import _ from "lodash";
 
 const useStyles = makeStyles((theme) => ({
   root: {
@@ -26,20 +29,41 @@ export default function RateCard() {
   const dispatch = useDispatch();
   const data = useSelector((state) => state.DataReducer.inputData);
   const ratesData = data.rates;
-  const [rates, setRates] = useState(ratesData);
 
-  const handleChange = (e, fieldName) => {
-    let info = {};
-    info[fieldName] = e.target.value;
-    let newRates = Object.assign({}, rates, info);
-    setRates(newRates);
-  };
+  const formik = useFormik({
+    initialValues: ratesData,
+    validationSchema: Yup.object({
+      housePriceIndex: Yup.number().min(1).required("Required"),
+      investmentRate: Yup.number().min(1).required("Required"),
+      bankInterestRate: Yup.number().min(1).required("Required"),
+    }),
+  });
+  // const handleChange = (e, fieldName) => {
+  //   let info = {};
+  //   info[fieldName] = e.target.value;
+  //   let newRates = Object.assign({}, rates, info);
+  //   setRates(newRates);
+  // };
   const handleOnBlur = () => {
+    let rateData = Object.assign({}, formik.values);
+    rateData.housePriceIndex = rateData.housePriceIndex
+      ? rateData.housePriceIndex / 100
+      : 0;
+    rateData.investmentRate = rateData.investmentRate
+      ? rateData.investmentRate / 100
+      : 0;
+    rateData.bankInterestRate = rateData.bankInterestRate
+      ? rateData.bankInterestRate / 100
+      : 0;
     let updatedData = Object.assign({}, data, {
-      rates: rates,
+      rates: rateData,
     });
-    dispatch(getProjectedValues(updatedData));
+    if (_.isEmpty(formik.errors)) {
+      dispatch(getProjectedValues(updatedData));
+    }
   };
+
+  let { values, handleChange } = formik;
   return (
     <>
       <CardHeader
@@ -76,12 +100,13 @@ export default function RateCard() {
             label="Housing Price Index"
             name="housePriceIndex"
             type="text"
-            onChange={(e) => handleChange(e, "housePriceIndex")}
+            onChange={handleChange}
             onBlur={handleOnBlur}
             InputLabelProps={{
               shrink: true,
             }}
-            value={rates.housePriceIndex}
+            value={values.housePriceIndex}
+            error={formik.errors.housePriceIndex}
           />
           <TextField
             className={classes.txtField}
@@ -89,12 +114,13 @@ export default function RateCard() {
             label="Investment ROI"
             name="investmentRate"
             type="text"
-            onChange={(e) => handleChange(e, "investmentRate")}
+            onChange={handleChange}
             onBlur={handleOnBlur}
             InputLabelProps={{
               shrink: true,
             }}
-            value={rates.investmentRate}
+            value={values.investmentRate}
+            error={formik.errors.investmentRate}
           />
           <TextField
             className={classes.txtField}
@@ -102,12 +128,13 @@ export default function RateCard() {
             label="Bank Interest Rate"
             name="bankInterestRate"
             type="text"
-            onChange={(e) => handleChange(e, "bankInterestRate")}
+            onChange={handleChange}
             onBlur={handleOnBlur}
             InputLabelProps={{
               shrink: true,
             }}
-            value={rates.bankInterestRate}
+            value={values.bankInterestRate}
+            error={formik.errors.bankInterestRate}
           />
         </Grid>
       </CardContent>
