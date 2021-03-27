@@ -28,20 +28,15 @@ const useStyles = makeStyles((theme) => ({
     width: "100%",
   },
   paper: {
-    padding: theme.spacing(5),
-    textAlign: "center",
-    color: theme.palette.text.secondary,
+    backgroundColor: "#FFFFB7",
+    padding: theme.spacing(2),
+    width: "60%",
   },
   title: {
     fontSize: 18,
   },
   spanText: {
     fontWeight: "bold",
-  },
-  paper: {
-    backgroundColor: "#FFFFB7",
-    padding: theme.spacing(2),
-    width: "60%",
   },
   gridContainer: {
     display: "flex",

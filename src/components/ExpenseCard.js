@@ -123,7 +123,7 @@ export default function ExpenseCard() {
   const removeIncome = (e, index) => {
     let newItems = [...formik.values];
     newItems = newItems.filter(function (value, i, arr) {
-      return i != index;
+      return i !== index;
     });
     formik.setValues(newItems);
   };
