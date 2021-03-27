@@ -2,6 +2,7 @@ import React from "react";
 import { makeStyles } from "@material-ui/core/styles";
 import CardContent from "@material-ui/core/CardContent";
 import CardHeader from "@material-ui/core/CardHeader";
+import Card from "@material-ui/core/Card";
 import Typography from "@material-ui/core/Typography";
 import AttachMoneyIcon from "@material-ui/icons/AttachMoney";
 import Grid from "@material-ui/core/Grid";
@@ -271,7 +272,7 @@ export default function IncomeCard() {
   );
 
   return (
-    <>
+    <Card>
       <CardHeader
         title={
           <Typography
@@ -305,6 +306,6 @@ export default function IncomeCard() {
           </Grid>
         </Grid>
       </CardContent>
-    </>
+    </Card>
   );
 }
