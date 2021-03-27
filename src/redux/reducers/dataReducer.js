@@ -24,7 +24,7 @@ const initialState = {
     personalInformation: {
       startingAge: 21,
       startingSaving: 5000,
-      retirementAge: 12,
+      retirementAge: 55,
       lifeExpectancy: 80,
       investmentPercentage: 0.3,
     },
