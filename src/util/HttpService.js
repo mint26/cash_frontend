@@ -1,8 +1,15 @@
 import axios from "axios";
 const API_URL = process.env.REACT_APP_API_URL;
 
+const header = {
+  header: {
+    "Content-Type": "application/json",
+    "Access-Control-Allow-Origin": "*",
+  },
+};
+
 const post = (url, body) => {
-  return axios.post(url, body).then((response) => {
+  return axios.post(url, body, header).then((response) => {
     if (response) {
       return response;
     }
