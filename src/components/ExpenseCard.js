@@ -101,7 +101,7 @@ export default function ExpenseCard() {
         <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Annual Inflation Rate</Typography>
+        <Typography>Annual Inflation Rate (%)</Typography>
       </TableCell>
     </TableRow>
   );

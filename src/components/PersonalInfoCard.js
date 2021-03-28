@@ -169,7 +169,7 @@ const PersonalInfoCard = () => {
               gutterBottom
             >
               <label htmlFor="investmentPercentage">
-                % of Savings Invested
+                 Savings Invested (%)
               </label>
             </Typography>
           </Grid>
