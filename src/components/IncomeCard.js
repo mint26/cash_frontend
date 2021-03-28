@@ -68,6 +68,7 @@ export default function IncomeCard() {
         newIncomeAmount: Yup.number().min(1).required("Required"),
         newAgeFrom: Yup.number().min(1).required("Required"),
         newAgeTo: Yup.number().min(1).required("Required"),
+        newBonus: Yup.number().required("Required"),
         newRate: Yup.number().required("Required"),
       })
     ),
@@ -109,8 +110,12 @@ export default function IncomeCard() {
         <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
+        <Typography>Bonus</Typography>
+      </TableCell>
+      <TableCell>
         <Typography>Annual Inflation Rate</Typography>
       </TableCell>
+
       <TableCell></TableCell>
     </TableRow>
   );
@@ -123,6 +128,7 @@ export default function IncomeCard() {
       newAgeFrom: 20,
       newAgeTo: 30,
       newRate: 0.03,
+      newBonus: 0,
     };
     let newItems = [...formik.values];
     newItems.push(newItem);
@@ -243,6 +249,31 @@ export default function IncomeCard() {
                             />
                             {formik.errors[index] ? (
                               <div>{formik.errors[index].newIncomeAmount}</div>
+                            ) : null}
+                          </>
+                        </TableCell>
+                        <TableCell>
+                          <>
+                            <Field
+                              className={`MuiInputBase-input MuiInput-input ${classes.tableCell}`}
+                              variant="standard"
+                              name={`incomes.${index}.newBonus`}
+                              type="text"
+                              onChange={(e) =>
+                                handleChangeIncome(
+                                  e,
+                                  "newBonus",
+                                  values,
+                                  setValues,
+                                  index
+                                )
+                              }
+                              onBlur={handleOnBlur}
+                              value={value.newBonus}
+                              error={formik.errors}
+                            />
+                            {formik.errors[index] ? (
+                              <div>{formik.errors[index].newBonus}</div>
                             ) : null}
                           </>
                         </TableCell>

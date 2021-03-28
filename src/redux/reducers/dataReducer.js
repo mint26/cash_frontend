@@ -18,7 +18,7 @@ const initialState = {
         newAgeFrom: 21,
         newAgeTo: 25,
         newRate: 0.042,
-        newBonus: 2,
+        newBonus: 0,
       },
     ],
     personalInformation: {
