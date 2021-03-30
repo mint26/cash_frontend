@@ -126,41 +126,24 @@ export default function LineChartCard() {
         </ResponsiveContainer>
         <Grid container className={classes.gridContainer}>
           <Paper className={classes.paper}>
-            <Grid item xs={12}>
+          
+          <Grid item xs={12}>
               <Typography>
-                First age when you net assets reach 0 is{" "}
+                🚫 The first time your net assets reach negative is when you are {" "}
                 <span className={classes.spanText}>
                   {data.zero_savings_age}
                 </span>
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+          
+          <Grid item xs={12}>
               <Typography>
-                You can increase your expenses by{" "}
-                <span className={classes.spanText}>
-                  {data.potential_max_expenses}
-                </span>
+               In order to retire comfortably till life expectancy:
               </Typography>
             </Grid>
             <Grid item xs={12}>
               <Typography>
-                You can reduce your income by{" "}
-                <span className={classes.spanText}>
-                  {data.maximum_income_reduction}
-                </span>
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>
-                Your earliest retirement age is{" "}
-                <span className={classes.spanText}>
-                  {data.recommended_retirement_age}
-                </span>
-              </Typography>
-            </Grid>
-            <Grid item xs={12}>
-              <Typography>
-                Your lowest investment rate is{" "}
+                📈 Your lowest investment annual rate is{" "}
                 <span className={classes.spanText}>
                   {data.minimum_investment_rate}
                 </span>
@@ -168,12 +151,37 @@ export default function LineChartCard() {
             </Grid>
             <Grid item xs={12}>
               <Typography>
-                Your lowest investment allocation is{" "}
+                🥚 Your lowest investment allocation percentage is{" "}
                 <span className={classes.spanText}>
                   {data.minimum_investment_percentage}
                 </span>
               </Typography>
             </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                🛒 You may choose to increase your expenses by up to {" "}
+                <span className={classes.spanText}>
+                  {data.potential_max_expenses}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                💰 You may choose to reduce your income by up to {" "}
+                <span className={classes.spanText}>
+                  {data.maximum_income_reduction}
+                </span>
+              </Typography>
+            </Grid>
+            <Grid item xs={12}>
+              <Typography>
+                👴 Your earliest retirement age is {" "}
+                <span className={classes.spanText}>
+                  {data.recommended_retirement_age}
+                </span>
+              </Typography>
+            </Grid>
+            
           </Paper>
         </Grid>
       </CardContent>

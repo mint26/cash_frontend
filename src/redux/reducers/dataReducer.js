@@ -42,6 +42,7 @@ const initialState = {
     },
   },
   data: {
+    // life_expectancy: inputData.personalInformation.lifeExpectancy,
     maximum_income_reduction: "16%",
     minimum_investment_percentage: "10%",
     minimum_investment_rate: "4%",
