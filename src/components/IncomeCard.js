@@ -88,9 +88,6 @@ export default function IncomeCard() {
   };
   const handleOnBlur = () => {
     let values = [...formik.values];
-    values.newRate = values.newRate
-      ? values.newRate / 100
-      : 0;
     let updatedData = Object.assign({}, data, {
       incomes: values,
     });

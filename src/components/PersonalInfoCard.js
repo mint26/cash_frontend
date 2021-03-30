@@ -46,9 +46,6 @@ const PersonalInfoCard = () => {
   // };
   const handleOnBlur = () => {
     let personalInfo = Object.assign({}, formik.values);
-    personalInfo.investmentPercentage = personalInfo.investmentPercentage
-      ? personalInfo.investmentPercentage / 100
-      : 0;
     let updatedData = Object.assign({}, data, {
       personalInformation: personalInfo,
     });
