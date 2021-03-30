@@ -43,12 +43,12 @@ const initialState = {
   },
   data: {
     // life_expectancy: inputData.personalInformation.lifeExpectancy,
-    maximum_income_reduction: "16%",
-    minimum_investment_percentage: "10%",
-    minimum_investment_rate: "4%",
-    potential_max_expenses: "15%",
-    recommended_retirement_age: "12",
-    zero_savings_age: "23",
+    maximum_income_reduction: "26%",
+    minimum_investment_percentage: "0%",
+    minimum_investment_rate: "0%",
+    potential_max_expenses: "33%",
+    recommended_retirement_age: "56",
+    zero_savings_age: "104",
   },
 };
 

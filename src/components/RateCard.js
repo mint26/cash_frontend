@@ -40,15 +40,15 @@ export default function RateCard() {
   });
   const handleOnBlur = () => {
     let rateData = Object.assign({}, formik.values);
-    rateData.housePriceIndex = rateData.housePriceIndex
-      ? rateData.housePriceIndex / 100
-      : 0;
-    rateData.investmentRate = rateData.investmentRate
-      ? rateData.investmentRate / 100
-      : 0;
-    rateData.bankInterestRate = rateData.bankInterestRate
-      ? rateData.bankInterestRate / 100
-      : 0;
+    //rateData.housePriceIndex = rateData.housePriceIndex
+    //  ? rateData.housePriceIndex / 100
+    //  : 0;
+    //rateData.investmentRate = rateData.investmentRate
+    //  ? rateData.investmentRate / 100
+    //  : 0;
+    //rateData.bankInterestRate = rateData.bankInterestRate
+    //  ? rateData.bankInterestRate / 100
+    //  : 0;
     let updatedData = Object.assign({}, data, {
       rates: rateData,
     });
