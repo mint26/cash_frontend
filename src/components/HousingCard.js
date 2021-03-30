@@ -49,6 +49,12 @@ export default function HousingCard() {
 
   const handleOnBlur = () => {
     let housingData = Object.assign({}, formik.values);
+    housingData.downPayment = housingData.downPayment
+      ? housingData.downPayment / 100
+      : 0;
+    housingData.houseInterestRate = housingData.houseInterestRate
+      ? housingData.houseInterestRate / 100
+      : 0; 
     let updatedData = Object.assign({}, data, {
       housingInfo: housingData,
     });

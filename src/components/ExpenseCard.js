@@ -78,6 +78,10 @@ export default function ExpenseCard() {
     setValues(newItems);
   };
   const handleOnBlur = () => {
+    let expenseData = Object.assign({}, formik.values);
+    expenseData.newRate = expenseData.newRate
+      ? expenseData.newRate / 100
+      : 0;
     let updatedData = Object.assign({}, data, {
       expenses: formik.values,
     });
