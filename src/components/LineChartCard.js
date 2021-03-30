@@ -135,29 +135,12 @@ export default function LineChartCard() {
                 </span>
               </Typography>
             </Grid>
-          
-          {/* <Grid item xs={12}>
+          <Grid item xs={12}>
               <Typography>
                In order to retire comfortably till life expectancy:
               </Typography>
             </Grid>
-            <Grid item xs={12}>
-              <Typography>
-                📈 Your lowest investment annual rate is{" "}
-                <span className={classes.spanText}>
-                  {data.minimum_investment_rate}
-                </span>
-              </Typography>
-            </Grid> */}
-            {/* <Grid item xs={12}>
-              <Typography>
-                🥚 Your lowest investment allocation percentage is{" "}
-                <span className={classes.spanText}>
-                  {data.minimum_investment_percentage}
-                </span>
-              </Typography>
-            </Grid> */}
-            <Grid item xs={12}>
+          <Grid item xs={12}>
               <Typography>
                 🛒 You may choose to increase your expenses by up to {" "}
                 <span className={classes.spanText}>
@@ -165,7 +148,7 @@ export default function LineChartCard() {
                 </span>
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+          <Grid item xs={12}>
               <Typography>
                 💰 You may choose to reduce your income by up to {" "}
                 <span className={classes.spanText}>
@@ -173,7 +156,7 @@ export default function LineChartCard() {
                 </span>
               </Typography>
             </Grid>
-            <Grid item xs={12}>
+          <Grid item xs={12}>
               <Typography>
                 👴 Your earliest retirement age is {" "}
                 <span className={classes.spanText}>
@@ -181,6 +164,24 @@ export default function LineChartCard() {
                 </span>
               </Typography>
             </Grid>
+          
+          {/* <Grid item xs={12}>
+              <Typography>
+                📈 Your lowest investment annual rate is{" "}
+                <span className={classes.spanText}>
+                  {data.minimum_investment_rate}
+                </span>
+              </Typography>
+            </Grid>
+          <Grid item xs={12}>
+              <Typography>
+                🥚 Your lowest investment allocation percentage is{" "}
+                <span className={classes.spanText}>
+                  {data.minimum_investment_percentage}
+                </span>
+              </Typography>
+            </Grid> */}
+           
             
           </Paper>
         </Grid>
