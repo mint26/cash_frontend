@@ -137,12 +137,12 @@ export default function LineChartCard() {
             </Grid>
           <Grid item xs={12}>
               <Typography>
-               In order to retire comfortably till life expectancy:
+               In order to retire comfortably till your desired life expectancy you may choose to do 1 of the following:
               </Typography>
             </Grid>
           <Grid item xs={12}>
               <Typography>
-                🛒 You may choose to increase your expenses by up to {" "}
+                🛒 Increase your expenses by up to {" "}
                 <span className={classes.spanText}>
                   {data.potential_max_expenses}
                 </span>
@@ -150,7 +150,7 @@ export default function LineChartCard() {
             </Grid>
           <Grid item xs={12}>
               <Typography>
-                💰 You may choose to reduce your income by up to {" "}
+                💰 Reduce your income by up to {" "}
                 <span className={classes.spanText}>
                   {data.maximum_income_reduction}
                 </span>
@@ -158,7 +158,7 @@ export default function LineChartCard() {
             </Grid>
           <Grid item xs={12}>
               <Typography>
-                👴 Your earliest retirement age is {" "}
+                👴 Retire at {" "} years old
                 <span className={classes.spanText}>
                   {data.recommended_retirement_age}
                 </span>
