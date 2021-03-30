@@ -86,7 +86,7 @@ export default function LineChartCard() {
               tick={{ fontSize: 10 }}
             >
               <Label
-                value={"Income/Expense"}
+                value={"Income / Expense"}
                 angle={-90}
                 position="outside"
                 fill="#676767"

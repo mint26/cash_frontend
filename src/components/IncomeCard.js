@@ -124,10 +124,10 @@ export default function IncomeCard() {
     let len = formik.values ? formik.values.length : 0;
     const newItem = {
       newIncomeName: "Income " + (len + 1),
-      newIncomeAmount: 1,
-      newAgeFrom: 20,
-      newAgeTo: 30,
-      newRate: 0.03,
+      newIncomeAmount: 0,
+      newAgeFrom: 0,
+      newAgeTo: 0,
+      newRate: 0,
       newBonus: 0,
     };
     let newItems = [...formik.values];
