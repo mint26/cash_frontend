@@ -158,7 +158,7 @@ export default function LineChartCard() {
             </Grid>
           <Grid item xs={12}>
               <Typography>
-                OR 👴 retire at {" "}
+                OR 👴 retire at  {" "}
                 <span className={classes.spanText}>
                   {data.recommended_retirement_age}
                 </span>
