@@ -113,7 +113,7 @@ export default function IncomeCard() {
         <Typography>Monthly Amount</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Bonus</Typography>
+        <Typography># of Bonus Months</Typography>
       </TableCell>
       <TableCell>
         <Typography>Annual Income Increment (%)</Typography>
@@ -127,9 +127,9 @@ export default function IncomeCard() {
     let len = formik.values ? formik.values.length : 0;
     const newItem = {
       newIncomeName: "Income " + (len + 1),
-      newIncomeAmount: 0,
-      newAgeFrom: 0,
-      newAgeTo: 0,
+      newIncomeAmount: 1,
+      newAgeFrom: 1,
+      newAgeTo: 1,
       newRate: 0,
       newBonus: 0,
     };

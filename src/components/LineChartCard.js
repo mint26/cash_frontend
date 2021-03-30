@@ -78,7 +78,7 @@ export default function LineChartCard() {
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="age" />
+            <XAxis dataKey="age" label={{ value: 'Age', position: 'insideBottomRight'}} />
             <YAxis
               width={80}
               yAxisId="left"

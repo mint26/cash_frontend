@@ -114,9 +114,9 @@ export default function ExpenseCard() {
     let len = formik.values ? formik.values.length : 0;
     const newItem = {
       newExpenseName: "Expense " + (len + 1),
-      newExpenseAmount: 0,
-      newAgeFrom: 0,
-      newAgeTo: 0,
+      newExpenseAmount: 1,
+      newAgeFrom: 1,
+      newAgeTo: 1,
       newRate: 0,
     };
     let newItems = [...formik.values];

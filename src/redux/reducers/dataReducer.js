@@ -6,7 +6,7 @@ const initialState = {
       {
         newExpenseName: "Expense 1",
         newExpenseAmount: 1628,
-        newAgeFrom: 31,
+        newAgeFrom: 30,
         newAgeTo: 85,
         newRate: 2.52,
       },
@@ -15,7 +15,7 @@ const initialState = {
       {
         newIncomeName: "Income 1",
         newIncomeAmount: 4534,
-        newAgeFrom: 31,
+        newAgeFrom: 30,
         newAgeTo: 64,
         newRate: 4.2,
         newBonus: 2,
@@ -23,17 +23,17 @@ const initialState = {
     ],
     personalInformation: {
       startingAge: 30,
-      startingSaving: 250000,
-      retirementAge: 65,
-      lifeExpectancy: 80,
+      startingSaving: 150000,
+      retirementAge: 62,
+      lifeExpectancy: 85,
       investmentPercentage: 30,
     },
     housingInfo: {
       housePrice: 500000,
-      targetAge: 32,
+      targetAge: 34,
       houseInterestRate: 2.6,
-      loanLength: 15,
-      downPayment: 10,
+      loanLength: 20,
+      downPayment: 15,
     },
     rates: {
       housePriceIndex: 5.96,
