@@ -22,7 +22,7 @@ const initialState = {
       },
     ],
     personalInformation: {
-      startingAge: 30,
+      startingAge: 31,
       startingSaving: 200000,
       retirementAge: 65,
       lifeExpectancy: 80,
