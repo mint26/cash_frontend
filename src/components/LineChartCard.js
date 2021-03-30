@@ -78,17 +78,17 @@ export default function LineChartCard() {
             }}
           >
             <CartesianGrid stroke="#f5f5f5" />
-            <XAxis dataKey="age" label={{ value: 'Age', position: 'insideBottomRight'}} />
+            <XAxis dataKey="age"  label={{ fontSize:"14", value: 'Age', fill:"#676767", position: 'insideBottomRight', dy:20}} />
             <YAxis
               width={80}
               yAxisId="left"
               orientation="left"
-              tick={{ fontSize: 10 }}
+              tick={{ fontSize: 8 }}
             >
               <Label
                 value={"Net Assets"}
-                angle={-90}
-                position="outside"
+                angle={0}
+                position="top"
                 fill="#676767"
                 fontSize={14}
               />
@@ -101,8 +101,8 @@ export default function LineChartCard() {
             >
               <Label
                 value={"Income / Expense"}
-                angle={-90}
-                position="outside"
+                angle={0}
+                position="top"
                 fill="#676767"
                 fontSize={14}
               />
