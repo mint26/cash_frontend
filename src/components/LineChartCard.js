@@ -136,7 +136,7 @@ export default function LineChartCard() {
               </Typography>
             </Grid>
           
-          <Grid item xs={12}>
+          {/* <Grid item xs={12}>
               <Typography>
                In order to retire comfortably till life expectancy:
               </Typography>
@@ -148,15 +148,15 @@ export default function LineChartCard() {
                   {data.minimum_investment_rate}
                 </span>
               </Typography>
-            </Grid>
-            <Grid item xs={12}>
+            </Grid> */}
+            {/* <Grid item xs={12}>
               <Typography>
                 🥚 Your lowest investment allocation percentage is{" "}
                 <span className={classes.spanText}>
                   {data.minimum_investment_percentage}
                 </span>
               </Typography>
-            </Grid>
+            </Grid> */}
             <Grid item xs={12}>
               <Typography>
                 🛒 You may choose to increase your expenses by up to {" "}
