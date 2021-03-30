@@ -114,7 +114,7 @@ export default function ExpenseCard() {
       newExpenseAmount: 1,
       newAgeFrom: 1,
       newAgeTo: 1,
-      newRate: 0,
+      newRate: 2.52,
     };
     let newItems = [...formik.values];
     newItems.push(newItem);

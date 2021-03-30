@@ -127,8 +127,8 @@ export default function IncomeCard() {
       newIncomeAmount: 1,
       newAgeFrom: 1,
       newAgeTo: 1,
-      newRate: 0,
-      newBonus: 0,
+      newRate: 4.2,
+      newBonus: 2,
     };
     let newItems = [...formik.values];
     newItems.push(newItem);
