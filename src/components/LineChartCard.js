@@ -137,7 +137,7 @@ export default function LineChartCard() {
             </Grid>
           <Grid item xs={12}>
               <Typography>
-               In order to retire comfortably till your desired life expectancy you may choose to:
+               In order to retire comfortably at your desired life expectancy you may choose to:
               </Typography>
             </Grid>
           <Grid item xs={12}>
