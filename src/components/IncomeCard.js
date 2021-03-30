@@ -101,7 +101,7 @@ export default function IncomeCard() {
         <Typography>Source of Income</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Age from</Typography>
+        <Typography>Age From</Typography>
       </TableCell>
       <TableCell>
         <Typography>Age To</Typography>

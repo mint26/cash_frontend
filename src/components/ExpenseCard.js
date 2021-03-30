@@ -93,7 +93,7 @@ export default function ExpenseCard() {
         <Typography>Source of Expense</Typography>
       </TableCell>
       <TableCell>
-        <Typography>Age from</Typography>
+        <Typography>Age From</Typography>
       </TableCell>
       <TableCell>
         <Typography>Age To</Typography>
