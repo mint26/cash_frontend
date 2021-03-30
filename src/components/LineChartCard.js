@@ -86,7 +86,7 @@ export default function LineChartCard() {
               tick={{ fontSize: 10 }}
             >
               <Label
-                value={"Income / Expense"}
+                value={"Net Assets"}
                 angle={-90}
                 position="outside"
                 fill="#676767"
@@ -100,7 +100,7 @@ export default function LineChartCard() {
               tick={{ fontSize: 10 }}
             >
               <Label
-                value={"Net Assets"}
+                value={"Income / Expense"}
                 angle={-90}
                 position="outside"
                 fill="#676767"
