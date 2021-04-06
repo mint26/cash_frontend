@@ -43,3 +43,7 @@ The build is minified and the filenames include the hashes.\
 Your app is ready to be deployed!
 
 See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+
+## Backend Source Code
+
+The backend is a Flask API with MySQL DB. The source code and README for the backend can be found in the `backend` folder.
