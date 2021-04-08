@@ -4,6 +4,13 @@
 
 The prototype is available in https://cash.cs5224cash.site/
 
+## Dependencies
+
+To launch this project, you will need:
+
+- docker-compose and Docker installed
+- npm and Node.js installed
+
 ## Launching the application
 
 First launch the backend application by changing directory to the `backend` folder in this folder in a new terminal window. Then execute the following command in the new window:
@@ -33,7 +40,7 @@ REACT_APP_API_URL=http://localhost:5000 npm start
 
 The web application should open in your default browser, and you can start changing some of the values to use the app, or key in your own values.
 
-## Project dependencies
+## Frontend Project dependencies
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
