@@ -1,4 +1,7 @@
 # Cash Frontend
+When asked to make crucial life decisions, we are often advised to think what a future version of yourself 10, 30 or even 50 years down the road would have done.
+The CASH web app aims to help Singaporeans visualize what the future version of yourself would look like financially. Coupled with high levels of interactivity and dashboard capabilities, this web app aims to empower Singaporeans to forecast their financials and realize their financial goals.
+As this is a cloud computing module, we will also explore the various cloud computing tools we used to make CASH a reality.
 
 ## Prototype
 
