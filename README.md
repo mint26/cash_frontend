@@ -1,5 +1,9 @@
 # Cash Frontend
 
+## Prototype
+
+The prototype is available in https://cash.cs5224cash.site/
+
 ## Project dependencies
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
