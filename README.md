@@ -8,8 +8,8 @@ The prototype is available in https://cash.cs5224cash.site/
 
 To launch this project, you will need:
 
-- docker-compose and Docker installed
-- npm and Node.js installed
+- Docker and docker-compose installed. Follow the link [here](https://docs.docker.com/get-docker/) to install Docker and [here](https://docs.docker.com/compose/install/) to install docker-compose.
+- npm and Node.js installed. Follow the link [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install them.
 
 ## Launching the application
 
