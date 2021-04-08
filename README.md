@@ -3,6 +3,7 @@
 ## Prototype
 
 The prototype is available in https://cash.cs5224cash.site/
+
 ![Cash Demo](https://user-images.githubusercontent.com/25121123/114031448-f7daae00-98ad-11eb-9a5e-0decf5cdb388.gif)
 
 ## Dependencies
