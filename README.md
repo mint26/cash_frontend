@@ -6,9 +6,26 @@ The prototype is available in https://cash.cs5224cash.site/
 
 ## Launching the application
 
-First launch the backend application by opening the `backend` folder in a separate terminal and running `docker-compose build && docker-compose up`.
+First launch the backend application by changing directory to the `backend` folder in this folder in a new terminal window. Then execute the following command in the new window:
 
-Then once the backend is launched, launch the front-end by running the following:
+```bash
+docker-compose build && docker-compose up
+```
+
+Then wait for the backend to be launched. You should see something like this in the logs:
+
+```bash
+web_1      | [2021-04-08 11:55:11 +0000] [7] [INFO] Starting gunicorn 20.0.4
+web_1      | [2021-04-08 11:55:11 +0000] [7] [INFO] Listening at: http://0.0.0.0:5000 (7)
+web_1      | [2021-04-08 11:55:11 +0000] [7] [INFO] Using worker: sync
+web_1      | [2021-04-08 11:55:11 +0000] [8] [INFO] Booting worker with pid: 8
+web_1      | [2021-04-08 11:55:11 +0000] [9] [INFO] Booting worker with pid: 9
+web_1      | [2021-04-08 11:55:11 +0000] [10] [INFO] Booting worker with pid: 10
+web_1      | [2021-04-08 11:55:11 +0000] [11] [INFO] Booting worker with pid: 11
+web_1      | [2021-04-08 11:55:11 +0000] [12] [INFO] Booting worker with pid: 12
+```
+
+Once you see that, open another terminal window and change directory to this folder. Launch the front-end by running the following:
 
 ```bash
 REACT_APP_API_URL=http://localhost:5000 npm start
