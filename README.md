@@ -4,7 +4,43 @@
 
 The prototype is available in https://cash.cs5224cash.site/
 
-## Project dependencies
+## Dependencies
+
+To launch this project, you will need:
+
+- Docker and docker-compose installed. Follow the link [here](https://docs.docker.com/get-docker/) to install Docker and [here](https://docs.docker.com/compose/install/) to install docker-compose.
+- npm and Node.js installed. Follow the link [here](https://docs.npmjs.com/downloading-and-installing-node-js-and-npm/) to install them.
+
+## Launching the application
+
+First launch the backend application by changing directory to the `backend` folder in this folder in a new terminal window. Then execute the following command in the new window:
+
+```bash
+docker-compose build && docker-compose up
+```
+
+Then wait for the backend to be launched. You should see something like this in the logs:
+
+```bash
+web_1      | [2021-04-08 11:55:11 +0000] [7] [INFO] Starting gunicorn 20.0.4
+web_1      | [2021-04-08 11:55:11 +0000] [7] [INFO] Listening at: http://0.0.0.0:5000 (7)
+web_1      | [2021-04-08 11:55:11 +0000] [7] [INFO] Using worker: sync
+web_1      | [2021-04-08 11:55:11 +0000] [8] [INFO] Booting worker with pid: 8
+web_1      | [2021-04-08 11:55:11 +0000] [9] [INFO] Booting worker with pid: 9
+web_1      | [2021-04-08 11:55:11 +0000] [10] [INFO] Booting worker with pid: 10
+web_1      | [2021-04-08 11:55:11 +0000] [11] [INFO] Booting worker with pid: 11
+web_1      | [2021-04-08 11:55:11 +0000] [12] [INFO] Booting worker with pid: 12
+```
+
+Once you see that, open another terminal window and change directory to this folder. Launch the front-end by running the following:
+
+```bash
+REACT_APP_API_URL=http://localhost:5000 npm start
+```
+
+The web application should open in your default browser, and you can start changing some of the values to use the app, or key in your own values.
+
+## Frontend Project dependencies
 
 This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
 
