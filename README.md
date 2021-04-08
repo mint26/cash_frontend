@@ -7,7 +7,7 @@ As this is a cloud computing module, we will also explore the various cloud comp
 
 The prototype is available in https://cash.cs5224cash.site/
 
-![Cash Demo](https://user-images.githubusercontent.com/25121123/114031448-f7daae00-98ad-11eb-9a5e-0decf5cdb388.gif)
+![Cash Demo](https://user-images.githubusercontent.com/25121123/114033967-5739bd80-98b0-11eb-8ecd-2c3945168912.gif)
 
 ## Dependencies
 
